@@ -1,0 +1,73 @@
+a) demography:
+	- theoretical orientation:
+		TICKS:
+		- humanistic/experiential
+		- cognitive/behavioral 
+		- family-based interventions 
+		- art, drama or music (referred to as creative arts therapists) 
+		- eye movement desensitization and reprocessing 
+		- psychodynamic 
+		- cognitive analytical theory 
+		- and eclectic 
+		+ TEXTBOX
+
+	- workplace context:
+		TICKS
+		- "Do you work in”:
+		  - NHS
+		  - Private Practice
+		  - both
+		  - or other 
+		  + CONDITIONAL TEXTBOX*
+
+	- age INPUT
+	- gender TICK, SLIDER * o input para ahorrar una pantalla
+	- years of clinical experience INPUT 
+	- respondents’ highest qualification MULTI CHOICE * o input para ahorrar una pantalla
+	- number of hours a week they spent treating patients INPUT 
+
+b) “How influential was each of the following in deciding your favoured theoretical orientation?”
+	LIKERT "Not at all influential", "Sometimes", "Extremely Influential"
+	- research evidence
+	- personal experience with clients
+	- clinical training
+	- the treatment’s appeal to clients 
+	- intuition
+	- past experience with personal therapy
+
+c) "Which sources do you currently use to increase your skills and effectiveness as a clinician?"
+	LIKERT “Never", "Sometimes", "Always"
+	- personal experience with clients 
+	- empirical research from controlled trials 
+	- supervision
+	- empirical research from case studies 
+	- peer discussion 
+	- popular books 
+	- clinical case observations
+	- outcome measures
+	- clinical guidelines
+
+
+d) Research Attitudes Index
+	LIKERT "Strongly disagree,” “Neutral”, “Strongly agree”
+	- I am willing to use new and different types of therapy developed by researchers
+	- My clients are more complex and diverse than those in clinical trials
+	- It is my professional duty to keep up with new developments in treatment research
+	- My clients prefer other treatments than evidence based treatments
+	- My training emphasized research findings Therapy cannot be manualised
+	- My supervisors require me to use evidence based treatments*
+	- The diagnoses used in treatment trials are too simple
+	- Evidence based treatments are cost effective The treatments I favour have not been tested in a randomized controlled trial
+	- I may attract new clients by learning an evidence based treatment
+	- I have an individual treatment approach for each client
+	- It is important to incorporate scientific findings into my everyday practice
+	- I do not have the time to learn evidence based treatments 
+	- I would try a new therapy even if it was very different from what I am used to doing
+	- Training in evidence based treatments would cost me too much money personally
+	- I am interested in learning evidence based treatments I do not know which treatments are evidence based
+	- The treatments I use with my clients have an empirical basis
+	- My clinical training did not provide sufficient information about evidence based treatments
+	- The therapeutic alliance is more important than learning how to do a specific form of psychotherapy
+	- Most therapies are equally effective 
+	- My employer does not have the funds for training in evidence based treatments*
+	- Clinical experience is more important as a guide to treatment than research evidence
