@@ -10,6 +10,7 @@
     <script src="static/jspsych/plugins/jspsych-html-button-response.js"></script>
     <script src="static/jspsych/plugins/jspsych-survey-likert.js"></script>
     <script src="static/jspsych/plugins/jspsych-survey-text.js"></script>
+    <script src="static/jspsych/plugins/jspsych-survey-multi-choice.js"></script>
     <script src="static/jspsych/plugins/jspsych-survey-multi-select.js"></script>
     <script src="static/jquery-3.3.1.js"></script>
   </head>
@@ -47,7 +48,7 @@
 
   // Theoretical Orientation
   var theoretical_orientation_ticks = {
-    type: 'jspsych-survey-multi-select',
+    type: 'survey-multi-select',
     preamble: `Theoretical Orientation`,
     questions: [{
         prompt: "Theoretical Orientation", 
@@ -67,11 +68,11 @@
   
   // Workplace
   var workplace_ticks = {
-    type: 'jspsych-survey-multi-select',
-    preamble: `Theoretical Orientation`,
+    type: 'survey-multi-select',
+    preamble: '',
     questions: [{
-        prompt: "Theoretical Orientation", 
-        options: [], 
+        prompt: "Do you work in...", 
+        options: ["NHS", "Private Practice", "Both", "Other"], 
         horizontal: false,
         required: true,
       }],
@@ -140,12 +141,12 @@
 		{prompt:'The therapeutic alliance is more important than learning how to do a specific form of psychotherapy', options: scale, horizontal:true, required:true},
 		{prompt:'Most therapies are equally effective', options: scale, horizontal:true, required:true},
 		{prompt:'My employer does not have the funds for training in evidence based treatments*', options: scale, horizontal:true, required:true},
-		{prompt:'Clinical experience is more important as a guide to treatment than research evidence', options: scale, horizontal:true, required:true}]
+		{prompt:'Clinical experience is more important as a guide to treatment than research evidence', options: scale, horizontal:true, required:true}],
     button_label: 'Finish',
 	};
 
 
-  //https://stackoverflow.com/questions/42916162/issues-uploading-json-to-s3-using-node-js
+  // https://stackoverflow.com/questions/42916162/issues-uploading-json-to-s3-using-node-js
 
   var s3 = new AWS.S3()
   jsPsych.init({
@@ -158,8 +159,7 @@
 			  Body: JSON.stringify(jsPsych.data.get().json()),
 			  ContentType: "application/json",
 			  function (err,data) {console.log(JSON.stringify(err) + " " + JSON.stringify(data))}
-			  }); window.location = 'https://cerebrock.github.io/'},
-	 	});                        
+			  }); window.location = 'https://cerebrock.github.io/'}                        
   });
 </script>
 </html>
