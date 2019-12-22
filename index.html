@@ -174,14 +174,21 @@
     timeline: [welcome, consent, demography, theoretical_orientation_ticks, theoretical_orientation_box,
               workplace_ticks, workplace_box, influence, sources, research_attitudes_1, research_attitudes_2],
 
+
+s3.putObject({Bucket: 'bucket_name', 
+	      Key: 'my_products.json',Body: JSON.stringify(products), ContentType: "application/json"},function(err, data){console.log(JSON.stringify(err)+" "+JSON.stringify(data));});
+
+
     on_finish: function() {s3.putObject({
 			  Bucket: BucketName,
 			  Key: fileName,
 			  Body: JSON.stringify(jsPsych.data.get().json()),
 			  ContentType: "application/json",
-			  function (err,data) {console.log(JSON.stringify(err) + " " + JSON.stringify(data))}
-			  }); window.location = 'https://cerebrock.github.io/'}                        
-  });
+			  function (err,data) {console.log(JSON.stringify(err) + " " + JSON.stringify(data));
+                                              } 
+                                        }); window.location = 'https://cerebrock.github.io/'
+                          }
+              });
 </script>
 </html>
 
