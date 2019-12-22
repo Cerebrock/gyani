@@ -16,11 +16,8 @@
   </head>
   <body></body>
   <script>
-
-
-
-
-
+  
+  // Preamble
 
   var welcome = {
     type: "html-button-response",
@@ -157,10 +154,9 @@
 	};
 
 
-  // https://stackoverflow.com/questions/42916162/issues-uploading-json-to-s3-using-node-js
+  // AWS
 
   var s3 = new AWS.S3()
-
   var  = "unket";
   var bucketRegion = "eu-west-1";
   var IdentityPoolId = "eu-west-1:f41d7b21-fb70-4056-aca7-09166a386768";
@@ -172,7 +168,8 @@
 	  })
 	});
 
-
+  //
+	
   jsPsych.init({
     timeline: [welcome, consent, demography, theoretical_orientation_ticks, theoretical_orientation_box,
               workplace_ticks, workplace_box, influence, sources, research_attitudes_1, research_attitudes_2],
