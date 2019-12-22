@@ -17,10 +17,15 @@
   <body></body>
   <script>
 
+
+
+
+
+
   var welcome = {
     type: "html-button-response",
     stimulus: "<font size=5.5><p>¡Bienvenido!</p><p>"+
-    "<p>Te haremos algunas preguntas sobre tu práctica profesional.<p>Procurá atender lo más que puedas y contar con un entorno tranquilo.</p>",
+    "<p>Te haremos algunas preguntas sobre tu práctica profesional.<p>Procurá estar en un ambiente tranquilo y prestar la mayor atención posible.</p>",
     trial_duration: 900000,
     choices: ['Continuar'],
     };
@@ -118,7 +123,7 @@
 
   // Research Attitudes
   scale = ["Strongly disagree", "Neutral", "Strongly agree"]
-  var research_attitudes = {
+  var research_attitudes_1 = {
     type: 'survey-multi-choice',
     preamble: 'Which sources do you currently use to increase your skills and effectiveness as a clinician?',
     questions: [{prompt:'I am willing to use new and different types of therapy developed by researchers', options: scale, horizontal:true, required:true},
@@ -130,8 +135,14 @@
 		{prompt:'The diagnoses used in treatment trials are too simple', options: scale, horizontal:true, required:true},
 		{prompt:'Evidence based treatments are cost effective the treatments i favour have not been tested in a randomized controlled trial', options: scale, horizontal:true, required:true},
 		{prompt:'I may attract new clients by learning an evidence based treatment', options: scale, horizontal:true, required:true},
-		{prompt:'I have an individual treatment approach for each client', options: scale, horizontal:true, required:true},
-		{prompt:'It is important to incorporate scientific findings into my everyday practice', options: scale, horizontal:true, required:true},
+		{prompt:'I have an individual treatment approach for each client', options: scale, horizontal:true, required:true}],
+    button_label: 'Continue',
+	};
+
+  var research_attitudes_2 = {
+    type: 'survey-multi-choice',
+    preamble: 'Which sources do you currently use to increase your skills and effectiveness as a clinician? (cont.)',
+    questions: [{prompt:'It is important to incorporate scientific findings into my everyday practice', options: scale, horizontal:true, required:true},
 		{prompt:'I do not have the time to learn evidence based treatments', options: scale, horizontal:true, required:true},
 		{prompt:'I would try a new therapy even if it was very different from what i am used to doing', options: scale, horizontal:true, required:true},
 		{prompt:'Training in evidence based treatments would cost me too much money personally', options: scale, horizontal:true, required:true},
@@ -149,13 +160,26 @@
   // https://stackoverflow.com/questions/42916162/issues-uploading-json-to-s3-using-node-js
 
   var s3 = new AWS.S3()
+
+  var  = "unket";
+  var bucketRegion = "eu-west-1";
+  var IdentityPoolId = "eu-west-1:f41d7b21-fb70-4056-aca7-09166a386768";
+  var fileName = 'test.json'; 
+  AWS.config.update({
+	  region: bucketRegion,
+	  credentials: new AWS.CognitoIdentityCredentials({
+	    IdentityPoolId: IdentityPoolId
+	  })
+	});
+
+
   jsPsych.init({
     timeline: [welcome, consent, demography, theoretical_orientation_ticks, theoretical_orientation_box,
-              workplace_ticks, workplace_box, influence, sources, research_attitudes],
+              workplace_ticks, workplace_box, influence, sources, research_attitudes_1, research_attitudes_2],
 
     on_finish: function() {s3.putObject({
-			  Bucket: 'unket',
-			  Key: 'test.json',
+			  Bucket: BucketName,
+			  Key: fileName,
 			  Body: JSON.stringify(jsPsych.data.get().json()),
 			  ContentType: "application/json",
 			  function (err,data) {console.log(JSON.stringify(err) + " " + JSON.stringify(data))}
