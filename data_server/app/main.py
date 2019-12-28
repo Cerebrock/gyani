@@ -31,7 +31,7 @@ def get_data(to_s3=True):
 
 @app.route('/', methods = ['GET'])
 def greet():
-    return return '<div>Server para recolección</div>'
+    return '<div>Server para recolección</div>'
 
 if __name__ == '__main__':
     app.run(host="0.0.0.0", port=80)
