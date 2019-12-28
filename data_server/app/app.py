@@ -30,4 +30,4 @@ def get_data(to_s3=True):
     return ''
 
 if __name__ == '__main__':
-    app.run(host="0.0.0.0")
+    app.run(host="0.0.0.0", port=80)
