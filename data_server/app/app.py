@@ -8,19 +8,22 @@ from time import strftime
 exp_path = os.path.dirname(os.path.abspath(__file__))
 app = Flask(__name__, template_folder=exp_path)
 
-s3 = boto3.client('s3', 'AKIAJZ46CC3EET5DNKAA', 'Q/f7tdaTWCe/fqSIQF7FFPBjwKSrlDx8w7hsTrcs')
+s3 = boto3.client('s3', 
+                  aws_access_key_id='AKIAJZ46CC3EET5DNKAA',
+                  aws_secret_access_key='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')
+
+bucket_name = 'unket'
+folder = 'gyani'
 
 @app.route('/postdata', methods = ['POST'])
 def get_data(to_s3=True): 
-    out_name = f"gyani/{strftime('%Y-%m-%d %H-%M-%S')}_{request.referrer}.json"
+    out_name = f"{folder}/{strftime('%Y-%m-%d %H-%M-%S')}.json"
     data = request.form['data']
-    bucket_name = 'unket'
 
     if to_s3:
         resp = s3.put_object(Bucket=bucket_name,
                   Key=out_name,
                   Body=json.dumps(data).encode())
-
     else:
         with open(exp_path + '\data\\' + out_name, 'a+') as out:
             out.write(data)
