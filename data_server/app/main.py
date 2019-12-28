@@ -4,7 +4,7 @@ import os
 from time import strftime
 import json
 import boto3
-from flask-cors import CORS
+from flask_cors import CORS
 from flask import Flask, render_template, request
 
 #exp_path = os.path.dirname(os.path.abspath(__file__))
