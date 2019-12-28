@@ -12,7 +12,7 @@ s3 = boto3.client('s3', 'AKIAJZ46CC3EET5DNKAA', 'Q/f7tdaTWCe/fqSIQF7FFPBjwKSrlDx
 
 @app.route('/postdata', methods = ['POST'])
 def get_data(to_s3=True): 
-    out_name = f"{strftime('%Y-%m-%d %H-%M-%S')}_{request.referrer}.json"
+    out_name = f"gyani/{strftime('%Y-%m-%d %H-%M-%S')}_{request.referrer}.json"
     data = request.form['data']
     
     if to_s3:
@@ -22,10 +22,8 @@ def get_data(to_s3=True):
 
     else:
         with open(exp_path + '\data\\' + out_name, 'a+') as out:
-        out.write(data)
+            out.write(data)
     return ''
-	
-
 
 if __name__ == '__main__':
     app.run(host="0.0.0.0")
