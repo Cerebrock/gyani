@@ -148,6 +148,7 @@
 	};
 
   var date = Date().toString();
+  var ec2url = "http://ec2-18-220-16-225.us-east-2.compute.amazonaws.com/postdata"
 	
   jsPsych.init({
     timeline: [welcome, consent, demography, theoretical_orientation_ticks, theoretical_orientation_box,
@@ -156,11 +157,11 @@
     on_finish: function() { $.ajax({
                         type: "POST",
                         data: {'data' : JSON.stringify(jsPsych.data.get().json())},
-                        url: "http://",
+                        url: ec2url,
                         headers: {
                         'Content-Type': 'application/x-www-form-urlencoded'},
                         async:false,
-                        }); window.location = 'https://cerebrock.github.io/gracias.html'},
+                        }); window.location = 'https://cerebrock.github.io/'},
                         
               });
 
