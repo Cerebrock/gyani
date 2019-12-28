@@ -147,39 +147,23 @@
     button_label: 'Terminar',
 	};
 
-  var date = Date().toString(); 
-
-  // AWS
-
-  var s3 = new AWS.S3();
-  var BucketName = "unket";
-  var bucketRegion = "eu-west-1";
-  var IdentityPoolId = "eu-west-1:f41d7b21-fb70-4056-aca7-09166a386768";
-  AWS.config.update({
-	  region: bucketRegion,
-	  credentials: new AWS.CognitoIdentityCredentials({
-	    IdentityPoolId: IdentityPoolId
-	  })
-	});
-
-  //
+  var date = Date().toString();
 	
   jsPsych.init({
     timeline: [welcome, consent, demography, theoretical_orientation_ticks, theoretical_orientation_box,
               workplace_ticks, workplace_box, influence, sources, research_attitudes_1, research_attitudes_2],
-    on_finish: function() {jsPsych.data.addProperties({subject: 1, condition: 'control'});
-                          s3.putObject({
-			  Bucket: BucketName,
-			  Key: date + '.json',
-			  Body: JSON.stringify(jsPsych.data.get().json()),
-			  ContentType: "application/json",
-			  function (err,data) {console.log(JSON.stringify(err) + " " + JSON.stringify(data));
-                                              } 
-                                        });
-			  jsPsych.data.addProperties({'subject': date, 'group': 'condition_assignment'}); 
-                          //window.location = 'https://cerebrock.github.io/'
-                          }
+
+    on_finish: function() { $.ajax({
+                        type: "POST",
+                        data: {'data' : JSON.stringify(jsPsych.data.get().json())},
+                        url: "http://",
+                        headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded'},
+                        async:false,
+                        }); window.location = 'https://cerebrock.github.io/gracias.html'},
+                        
               });
+
 </script>
 </html>
 
