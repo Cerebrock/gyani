@@ -9,16 +9,17 @@ from time import strftime
 app = Flask(__name__)#, template_folder=exp_path)
 
 s3 = boto3.client('s3', 
-                  aws_access_key_id='AKIAJZ46CC3EET5DNKAA',
-                  aws_secret_access_key='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')
+                  aws_access_key_id = "AKIAIM3CRO3UI3RDNKWQ",
+                  aws_secret_access_key = "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")
 
 bucket_name = 'unket'
 folder = 'gyani'
 
 @app.route('/postdata', methods = ['POST'])
-def get_data(to_s3=True): 
+def get_data(to_s3=True):
     out_name = folder + strftime('%Y-%m-%d %H-%M-%S') + ".json"
     data = request.form['data']
+    print(out_name)
 
     if to_s3:
         resp = s3.put_object(Bucket=bucket_name,
