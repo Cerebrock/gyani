@@ -5,8 +5,8 @@ import os
 import boto3
 from time import strftime
 
-exp_path = os.path.dirname(os.path.abspath(__file__))
-app = Flask(__name__, template_folder=exp_path)
+#exp_path = os.path.dirname(os.path.abspath(__file__))
+app = Flask(__name__)#, template_folder=exp_path)
 
 s3 = boto3.client('s3', 
                   aws_access_key_id='AKIAJZ46CC3EET5DNKAA',
@@ -17,7 +17,7 @@ folder = 'gyani'
 
 @app.route('/postdata', methods = ['POST'])
 def get_data(to_s3=True): 
-    out_name = f"{folder}/{strftime('%Y-%m-%d %H-%M-%S')}.json"
+    out_name = folder + strftime('%Y-%m-%d %H-%M-%S') + ".json"
     data = request.form['data']
 
     if to_s3:
@@ -28,6 +28,10 @@ def get_data(to_s3=True):
         with open(exp_path + '\data\\' + out_name, 'a+') as out:
             out.write(data)
     return ''
+
+@app.route('/', methods = ['GET'])
+def greet():
+    return render_html('<div>Server para recolección</div>')
 
 if __name__ == '__main__':
     app.run(host="0.0.0.0", port=80)
