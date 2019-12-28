@@ -25,7 +25,7 @@ def get_data(to_s3=True):
     if to_s3:
         resp = s3.put_object(Bucket=bucket_name,
                   Key=out_name,
-                  Body=data)
+                  Body=json.dumps(data))
     else:
         with open(exp_path + '\data\\' + out_name, 'a+') as out:
             out.write(data)
