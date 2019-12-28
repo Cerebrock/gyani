@@ -18,7 +18,7 @@ folder = 'gyani'
 
 @app.route('/postdata', methods = ['POST'])
 def get_data(to_s3=True):
-    out_name = folder + strftime('%Y-%m-%d %H-%M-%S') + ".json"
+    out_name = folder + '/' + strftime('%Y-%m-%d_%H-%M-%S') + ".json"
     data = request.form['data']
     print(out_name)
 
