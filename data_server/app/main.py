@@ -4,12 +4,10 @@ import os
 from time import strftime
 import json
 import boto3
-from flask_cors import CORS
 from flask import Flask, render_template, request
 
 #exp_path = os.path.dirname(os.path.abspath(__file__))
 app = Flask(__name__)#, template_folder=exp_path)
-CORS(app)
 s3 = boto3.client('s3')
 
 bucket_name = 'unket'
