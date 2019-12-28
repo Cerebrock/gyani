@@ -10,9 +10,7 @@ from flask import Flask, render_template, request
 #exp_path = os.path.dirname(os.path.abspath(__file__))
 app = Flask(__name__)#, template_folder=exp_path)
 CORS(app)
-s3 = boto3.client('s3', 
-                  aws_access_key_id = "AKIAIM3CRO3UI3RDNKWQ",
-                  aws_secret_access_key = "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")
+s3 = boto3.client('s3')
 
 bucket_name = 'unket'
 folder = 'gyani'
