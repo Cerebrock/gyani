@@ -60,10 +60,24 @@
       }],
     button_label: 'Continuar',
   };
-  var theoretical_orientation_box = {
+
+  var other_box = {
     type: 'survey-text',
-    questions: [
-      {prompt: "Other:"}]};
+    questions: [{prompt: "Otro:"}],
+  };
+
+  var other_box_if = {
+   timeline : [other_box],   
+   conditional_function: function(){
+      if(jsPsych.data.get().last(1).values()[0]['responses'].indexOf('Otro') >= 0){
+        return true;
+      } else {
+        return false;
+      }
+    }
+  }
+
+
   
   // Workplace
   var workplace_ticks = {
@@ -71,17 +85,14 @@
     preamble: '',
     questions: [{
         prompt: "Contexto de trabajo", 
-        options: ["Público", "Privado", "Obra Social", "Other"], 
+        options: ["Público", "Privado", "Obra Social", "Otro"], 
         horizontal: false,
         required: true,
       }],
     button_label: 'Continuar',
   };
-  var workplace_box = {
-    type: 'survey-text',
-    questions: [
-      {prompt: "Other:"}]};
-  
+
+ 
   // Influence
   scale = ["No influyó para nada", "A veces", "Influyó totalmente"]
   var influence = {
@@ -152,8 +163,8 @@
   var ec2url = "http://ec2-3-19-29-181.us-east-2.compute.amazonaws.com/"
 	
   jsPsych.init({
-    timeline: [welcome, consent, demography, theoretical_orientation_ticks, theoretical_orientation_box,
-              workplace_ticks, workplace_box, influence, sources, research_attitudes_1, research_attitudes_2],
+    timeline: [welcome, consent, demography, theoretical_orientation_ticks, workplace_ticks, 
+               other_box_if, influence, sources, research_attitudes_1, research_attitudes_2],
 
     on_finish: function() { $.ajax({
                         type: "POST",
