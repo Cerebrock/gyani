@@ -53,7 +53,7 @@
     questions: [{
         prompt: "Orientación Teórica", 
         options: ["Humanista","Conductual","Cognitivo-Conductual","Sistémica","Psicodrama/Musicoterapia", 
-                  "EMDR","Psicodinámica","Psicoanálisis","Ecléctica (de todo un poco)"], 
+                  "EMDR","Psicodinámica","Psicoanálisis","Ecléctica (de todo un poco)", "Otra"], 
         horizontal: false,
         required: true,
         name: 'Orientation'
@@ -163,7 +163,7 @@
   var ec2url = "http://ec2-3-19-29-181.us-east-2.compute.amazonaws.com/"
 	
   jsPsych.init({
-    timeline: [welcome, consent, demography, theoretical_orientation_ticks, workplace_ticks, 
+    timeline: [welcome, consent, demography, theoretical_orientation_ticks, other_box_if, workplace_ticks, 
                other_box_if, influence, sources, research_attitudes_1, research_attitudes_2],
 
     on_finish: function() { $.ajax({
