@@ -2,3 +2,4 @@ boto3
 awscli
 datetime
 pyopenssl
+flask-cors
