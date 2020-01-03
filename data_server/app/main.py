@@ -9,15 +9,16 @@ from flask_cors import CORS
 
 #exp_path = os.path.dirname(os.path.abspath(__file__))
 app = Flask(__name__)#, template_folder=exp_path)
-CORS(app)
 s3 = boto3.client('s3')
+CORS(app)
 
 bucket_name = 'unket'
 folder = 'gyani'
 
 @app.route('/postdata', methods = ['POST'])
 def get_data(to_s3=True):
-    out_name = folder + '/' + strftime('%Y-%m-%d_%H-%M-%S') + ".json"
+    ref = request.headers.get("Referer").split('/')[-1]
+    out_name = folder + '/' + ref + strftime('%Y-%m-%d_%H-%M-%S') + ".json"
     data = request.form['data']
     print(out_name)
 
