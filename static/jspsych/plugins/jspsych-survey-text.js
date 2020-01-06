@@ -26,7 +26,7 @@ jsPsych.plugins['survey-text'] = (function() {
           prompt: {
             type: jsPsych.plugins.parameterType.STRING,
             pretty_name: 'Prompt',
-            default: undefined,
+            default: '',
             description: 'Prompt for the subject to response'
           },
           placeholder: {
@@ -50,7 +50,7 @@ jsPsych.plugins['survey-text'] = (function() {
           required: {
             type: jsPsych.plugins.parameterType.BOOL,
             pretty_name: 'Required',
-            default: false,
+            default: true,
             description: 'Require a response'
           },
           name: {
