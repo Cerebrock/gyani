@@ -59,15 +59,6 @@
     button_label: 'Continuar',
   };
 
-  var if_tcc = {
-   timeline : [tcc],   
-   conditional_function: function(){
-      if ((jsPsych.data.get().first(10).values()[3]['responses'].indexOf('Cognitivo') >= 0))
-	{
-        return true;
-      } else {
-        return false;
-      }}};
   
   var tcc = {
     type: 'survey-multi-select',
@@ -82,19 +73,18 @@
     button_label: 'Continuar',
   };
       
-  var if_psan = {
-   timeline : [psan],   
+  var if_tcc = {
+   timeline : [tcc],   
    conditional_function: function(){
-      if ((jsPsych.data.get().first(10).values()[3]['responses'].indexOf('Psicoanálisis') >= 0))
+      if ((jsPsych.data.get().first(4).values()[3]['responses'].indexOf('Cognitivo') >= 0))
 	{
         return true;
       } else {
         return false;
       }}};
-  
+      
   var psan = {
     type: 'survey-multi-select',
-    preamble : '',
     questions: [{
         prompt: '',
         options: ["Lacaniano", "Freudiano", "Psicodinámica", "Kleiniano", "Psicología analítica (junguiana)", "Otra"],
@@ -103,17 +93,19 @@
                 }],    
     button_label: 'Continuar',
   };
+
       
-  var if_hum = {
-   timeline : [hum],   
+  var if_psan = {
+   timeline : [psan],   
    conditional_function: function(){
-      if ((jsPsych.data.get().first(10).values()[3]['responses'].indexOf('Humanísticas') >= 0))
+      if ((jsPsych.data.get().first(4).values()[3]['responses'].indexOf('Psicoanálisis') >= 0))
 	{
         return true;
       } else {
         return false;
       }}};
   
+
   var hum = {
     type: 'survey-multi-select',
     preamble : '',
@@ -127,23 +119,50 @@
   };
       
       
-  var if_etc = {
-   timeline : [etc],   
+  var if_hum = {
+   timeline : [hum],   
    conditional_function: function(){
-      if ((jsPsych.data.get().first(10).values()[3]['responses'].indexOf('Ecléctic') >= 0))
+      if ((jsPsych.data.get().first(4).values()[3]['responses'].indexOf('Humanista') >= 0))
 	{
         return true;
       } else {
         return false;
       }}};
       
-  var etc = {
+  var ecl = {
     type: 'survey-text',
-    questions: [{prompt: 'Por favor detalle cuáles', value: '', columns:20, required:true}],
+    questions: [{prompt: 'Por favor, detalle cuáles:', value: '', columns:20, required:true}],
     button_label: 'Continuar',
   };
       
-    
+
+  var if_ecl = {
+   timeline : [etc],   
+   conditional_function: function(){
+      if ((jsPsych.data.get().first(4).values()[3]['responses'].indexOf('Ecléctic') >= 0))
+	{
+        return true;
+      } else {
+        return false;
+      }}};
+
+  var etc = {
+    type: 'survey-text',
+    questions: [{prompt: 'Por favor, detalle cuáles otras:', value: '', columns:20, required:true}],
+    button_label: 'Continuar',
+  };
+      
+
+  var if_etc = {
+   timeline : [etc],   
+   conditional_function: function(){
+      if ((jsPsych.data.get().first(4).values()[3]['responses'].indexOf('Otr') >= 0))
+	{
+        return true;
+      } else {
+        return false;
+      }}};
+      
   // Workplace
   var workplace_ticks = {
     type: 'survey-multi-select',
@@ -159,14 +178,14 @@
 
   var otro = {
     type: 'survey-text',
-    questions: [{prompt: "Por favor detalle", value: '', columns: 10,required:true}],
+    questions: [{prompt: "Por favor, detalle:", value: '', columns: 10,required:true}],
     button_label: 'Continuar',
   };
 
   var if_otro = {
    timeline : [otro],   
    conditional_function: function(){
-      if (jsPsych.data.get().last(1).values()[0]['responses'].indexOf('Otr') >= 0){
+      if ((jsPsych.data.get().last(1).values()[0]['responses'].indexOf('Otr') >= 0)){
         return true;
       } else {
         return false;
