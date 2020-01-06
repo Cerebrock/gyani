@@ -16,6 +16,9 @@
   <body></body>
   <script>
   
+  // Cada variable define una pantalla en el experimento
+  // La secuencia de variables se guarda abajo en la variable "timeline" de jspsych
+  
   // Preamble
   var welcome = {
     type: "html-button-response",
@@ -56,10 +59,15 @@
         required: true,
         name: 'orientacion'
       }],
-    button_label: 'Continuar',
-  };
+    button_label: 'Continuar'};
 
-  
+  // Aca hacemos los condicionales
+  // Guardamos una pantalla, ej. la de tcc en otra variable, if_tcc, 
+  // que tiene una función condicional que evalúa si corresponde o no. 
+  // Esta funcion ahora busca si una palabra, ej. "Cognitivo", se encontró en las respuestas de una etapa previa
+  // Para la orientación, que es la 4ta pregunta, usa .first(4).values()[3]
+  // O para la última inmediata .last().values()[0]  
+      
   var tcc = {
     type: 'survey-multi-select',
     preamble : '',
@@ -70,14 +78,11 @@
         horizontal: false,
         required: true,
                 }],    
-    button_label: 'Continuar',
-  };
-      
+    button_label: 'Continuar'};    
   var if_tcc = {
    timeline : [tcc],   
    conditional_function: function(){
-      if ((jsPsych.data.get().first(4).values()[3]['responses'].indexOf('Cognitivo') >= 0))
-	{
+      if ((jsPsych.data.get().first(4).values()[3]['responses'].indexOf('Cognitivo') >= 0)){
         return true;
       } else {
         return false;
@@ -91,15 +96,11 @@
         horizontal: false,
         required: true,
                 }],    
-    button_label: 'Continuar',
-  };
-
-      
+    button_label: 'Continuar'};
   var if_psan = {
    timeline : [psan],   
    conditional_function: function(){
-      if ((jsPsych.data.get().first(4).values()[3]['responses'].indexOf('Psicoanálisis') >= 0))
-	{
+      if ((jsPsych.data.get().first(4).values()[3]['responses'].indexOf('Psicoanálisis') >= 0)){
         return true;
       } else {
         return false;
@@ -113,12 +114,8 @@
         prompt: '',
         options: ["Gestalt", "Terapia Basada en el Cliente", "Counseling", "Coaching", "Otra"],
         horizontal: false,
-        required: true,
-                }],    
-    button_label: 'Continuar',
-  };
-      
-      
+        required: true}],    
+    button_label: 'Continuar'};  
   var if_hum = {
    timeline : [hum],   
    conditional_function: function(){
@@ -132,15 +129,11 @@
   var ecl = {
     type: 'survey-text',
     questions: [{prompt: 'Por favor, detalle cuáles:', value: '', columns:20, required:true}],
-    button_label: 'Continuar',
-  };
-      
-
+    button_label: 'Continuar'};
   var if_ecl = {
    timeline : [etc],   
    conditional_function: function(){
-      if ((jsPsych.data.get().first(4).values()[3]['responses'].indexOf('Ecléctic') >= 0))
-	{
+      if ((jsPsych.data.get().first(4).values()[3]['responses'].indexOf('Ecléctic') >= 0)){
         return true;
       } else {
         return false;
@@ -149,15 +142,11 @@
   var etc = {
     type: 'survey-text',
     questions: [{prompt: 'Por favor, detalle cuáles otras:', value: '', columns:20, required:true}],
-    button_label: 'Continuar',
-  };
-      
-
+    button_label: 'Continuar'};
   var if_etc = {
    timeline : [etc],   
    conditional_function: function(){
-      if ((jsPsych.data.get().first(4).values()[3]['responses'].indexOf('Otr') >= 0))
-	{
+      if ((jsPsych.data.get().first(4).values()[3]['responses'].indexOf('Otr') >= 0)){
         return true;
       } else {
         return false;
@@ -173,15 +162,11 @@
         horizontal: false,
         required: true,
       }],
-    button_label: 'Continuar',
-  };
-
+    button_label: 'Continuar'};
   var otro = {
     type: 'survey-text',
     questions: [{prompt: "Por favor, detalle:", value: '', columns: 10,required:true}],
-    button_label: 'Continuar',
-  };
-
+    button_label: 'Continuar'};
   var if_otro = {
    timeline : [otro],   
    conditional_function: function(){
@@ -191,7 +176,7 @@
         return false;
       }}};
  
-  // Influence
+  // Influence     
   scale = ["No influyó para nada", "A veces", "Influyó totalmente"]
   var influence = {
     type: 'survey-multi-choice',
@@ -205,6 +190,7 @@
     randomize_question_order : true,
     button_label: 'Continuar',
   };
+      
   // Sources
   scale = ["Nunca", "A veces", "Siempre"]
   var sources = {
@@ -222,6 +208,7 @@
     randomize_question_order : true,
     button_label: 'Continuar',
   };
+      
   // Research Attitudes
   scale = ["Fuertemente en desacuerdo", "Neutral", "Fuertemente de acuerdo"]
   var research_attitudes_1 = {
