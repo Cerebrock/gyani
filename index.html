@@ -76,8 +76,7 @@
         options: ["Análisis Conductual Aplicado", "Terapia Racional Emotiva (Ellis)", "Terapia Cognitiva (Beck)", "Terapia de Conducta (Wolpe, Marie Cover Jones)",
          "Terapia de Aceptación y Compromiso", "Terapia Dialéctico Conductual", "Terapia Analítico Funcional", "Terapia basada en Mindfulness", "Otra"],
         horizontal: false,
-        required: true,
-                }],    
+        required: true}],    
     button_label: 'Continuar'};    
   var if_tcc = {
    timeline : [tcc],   
@@ -119,8 +118,7 @@
   var if_hum = {
    timeline : [hum],   
    conditional_function: function(){
-      if ((jsPsych.data.get().first(4).values()[3]['responses'].indexOf('Humanista') >= 0))
-	{
+      if ((jsPsych.data.get().first(4).values()[3]['responses'].indexOf('Humanista') >= 0)){
         return true;
       } else {
         return false;
