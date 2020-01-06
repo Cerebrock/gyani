@@ -26,13 +26,13 @@ jsPsych.plugins['survey-text'] = (function() {
           prompt: {
             type: jsPsych.plugins.parameterType.STRING,
             pretty_name: 'Prompt',
-            default: '',
+            default: undefined,
             description: 'Prompt for the subject to response'
           },
           placeholder: {
             type: jsPsych.plugins.parameterType.STRING,
             pretty_name: 'Value',
-            default: "",
+            default: ' ',
             description: 'Placeholder text in the textfield.'
           },
           rows: {

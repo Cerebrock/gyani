@@ -39,11 +39,11 @@
   var demography = {
       type: 'survey-text',
       questions: [
-        {prompt: 'Cuál es su edad?', columns: 10, required:true},
-        {prompt: 'Género', columns: 10, required:true},
-        {prompt: 'Cuántos años de experiencia clínica posee?', columns: 10, required:true},
-        {prompt: 'Nivel máximo de educación alcanzado', columns: 10, required:true},
-        {prompt: 'Cuántas horas por semana pasa con pacientes?', columns: 10, required:true},
+        {prompt: 'Cuál es su edad??', placeholder:'', columns: 10, required:true},
+        {prompt: 'Género', columns: 10, placeholder:'', required:true},
+        {prompt: 'Cuántos años de experiencia clínica posee?', placeholder:'', columns: 10, required:true},
+        {prompt: 'Nivel máximo de educación alcanzado', columns: 10, placeholder:'', required:true},
+        {prompt: 'Cuántas horas por semana pasa con pacientes?', columns: 10, placeholder:'', required:true},
       ],
       required:true,
       button_label: 'Continuar',
@@ -127,7 +127,7 @@
       
   var ecl = {
     type: 'survey-text',
-    questions: [{prompt: 'Por favor, detalle cuáles:', value: '', columns:20, required:true}],
+    questions: [{prompt: 'Por favor, detalle cuáles:', placeholder:'', columns:20, required:true}],
     button_label: 'Continuar'};
   var if_ecl = {
    timeline : [etc],   
@@ -140,7 +140,7 @@
 
   var etc = {
     type: 'survey-text',
-    questions: [{prompt: 'Por favor, detalle cuáles otras:', value: '', columns:20, required:true}],
+    questions: [{prompt: 'Por favor, detalle cuáles otras:', placeholder:'',, columns:20, required:true}],
     button_label: 'Continuar'};
   var if_etc = {
    timeline : [etc],   
@@ -164,7 +164,7 @@
     button_label: 'Continuar'};
   var otro = {
     type: 'survey-text',
-    questions: [{prompt: "Por favor, detalle:", value: '', columns: 10,required:true}],
+    questions: [{prompt: "Por favor, detalle:", placeholder:'', columns: 10,required:true}],
     button_label: 'Continuar'};
   var if_otro = {
    timeline : [otro],   
