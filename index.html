@@ -39,7 +39,7 @@
   var demography = {
       type: 'survey-text',
       questions: [
-        {prompt: 'Cuál es su edad??', placeholder:'', columns: 10, required:true},
+        {prompt: 'Cuál es tu edad?', placeholder:'', columns: 10, required:true},
         {prompt: 'Género', columns: 10, placeholder:'', required:true},
         {prompt: 'Cuántos años de experiencia clínica posee?', placeholder:'', columns: 10, required:true},
         {prompt: 'Nivel máximo de educación alcanzado', columns: 10, placeholder:'', required:true},
@@ -71,7 +71,7 @@
       
   var tcc = {
     type: 'survey-multi-select',
-    preamble : '',
+    preamble : 'TCC:',
     questions: [{
         prompt: '',
         options: ["Análisis Conductual Aplicado", "Terapia Racional Emotiva (Ellis)", "Terapia Cognitiva (Beck)", "Terapia de Conducta (Wolpe, Marie Cover Jones)",
@@ -91,7 +91,7 @@
   var psan = {
     type: 'survey-multi-select',
     questions: [{
-        prompt: '',
+        prompt: 'Psicoanálisis:',
         options: ["Lacaniano", "Freudiano", "Psicodinámica", "Kleiniano", "Psicología analítica (junguiana)", "Otra"],
         horizontal: false,
         required: true,
@@ -109,7 +109,7 @@
 
   var hum = {
     type: 'survey-multi-select',
-    preamble : '',
+    preamble : 'Humanísta:',
     questions: [{
         prompt: '',
         options: ["Gestalt", "Terapia Basada en el Cliente", "Counseling", "Coaching", "Otra"],
