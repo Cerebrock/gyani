@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-<meta charset="UTF-8">
 <html>
   <head>
     <title>Con-ciencia</title>
@@ -22,67 +21,92 @@
   // Preamble
   var welcome = {
     type: "html-button-response",
-    stimulus: "<font size=5.5><p>Â¡Bienvenido!</p><p>"+
-    "<p>Te haremos algunas preguntas sobre tu prÃ¡ctica profesional.<p>ProcurÃ¡ estar en un ambiente tranquilo y prestar la mayor atenciÃ³n posible.</p>",
+    stimulus: "<font size=5.5><p>¡Hola!</p><p>"+
+    "<p>Esta encuesta forma parte del proyecto de investigación y divulgación científica <b>Neurotransmitiendo</b>.</p>"+
+    "<p>La encuesta está dirigida únicamente a psicólogos recibidos que estén o hayan trabajado en el ámbito clínico. Se agradece mucho la difusión de la misma a colegas que trabajen en el mismo ámbito.</p>"+
+    "<p>La participación en la misma es voluntaria teniendo el control de desistir si lo desea. La información que se recoja con este instrumento es confidencial y se utilizará solamente con fines científicos. Al participar de esta encuesta en línea su consentimiento informado será tomado como dado. Ante cualquier duda, puede escribir a <b>ntransmitiendo@gmail.com</b>",
     trial_duration: 900000,
     choices: ['Continuar'],
     };
   
   var consent = {
     type: "html-button-response",
-    stimulus: "<font size=5.5><p>Continuando con el experimento aceptÃ¡s aportar los datos generados, ayudÃ¡ndonos en nuestra labor de curiosidad cientÃ­fica. </p>"+
-    "<p>Si ya juntaste la valentÃ­a suficiente, focalizÃ¡ tu atenciÃ³n todo lo que puedas... y continuÃ¡</p>",
+    stimulus: "<font size=5.5><p>Continuando con el experimento aceptás aportar los datos generados, ayudándonos en nuestra labor de curiosidad científica. </p>"+
+    "<p>Te haremos algunas preguntas sobre tu práctica profesional.<p>Procurá estar en un ambiente tranquilo y prestar la mayor atención posible.</p>",
     choices : ['Continuar'],
     };
   
   // Demography 
-  var demography = {
+  var demography1 = {
       type: 'survey-text',
       questions: [
-        {prompt: 'CuÃ¡l es tu edad?', placeholder:'', columns: 10, required:true},
-        {prompt: 'GÃ©nero', columns: 10, placeholder:'', required:true},
-        {prompt: 'CuÃ¡ntos aÃ±os de experiencia clÃ­nica posee?', placeholder:'', columns: 10, required:true},
-        {prompt: 'Nivel mÃ¡ximo de educaciÃ³n alcanzado', columns: 10, placeholder:'', required:true},
-        {prompt: 'CuÃ¡ntas horas por semana pasa con pacientes?', columns: 10, placeholder:'', required:true},
+        {prompt: '¿Cuál es tu edad?', placeholder:'', columns: 10, required:true},
+        {prompt: '¿Cuántos años de experiencia clínica posee?', placeholder:'', columns: 10, required:true},
+        {prompt: '¿Cuántas horas por semana pasa con consultantes?', columns: 10, placeholder:'', required:true},
       ],
       required:true,
-      button_label: 'Continuar'};
-      
+    button_label: 'Continuar',
+  };
+
+  // Demography2
+      educacion = ["Licenciatura de grado","Carrera de especializacion","Master","Doctorado","Otro"]
+      generos = ["Femenino","Masculino","Otro","No deseo contestar"]
+  var demography2 = {
+      type: 'survey-multi-choice',
+      questions: [
+                {prompt:'Género', options: generos, horizontal:true, required:true},
+		{prompt:'Nivel Educativo Alcanzado', options: educacion, horizontal:true, required:true}], 
+      required:true,
+    button_label: 'Continuar',
+  };
+
+var otroo = {
+    type: 'survey-text',
+    questions: [{prompt: "Por favor, detalle:", placeholder:'', columns: 10,required:true, name:'otroo'}],
+    button_label: 'Continuar'};
+  var if_otroo = {
+   timeline : [otroo],   
+   conditional_function: function(){
+      if ((jsPsych.data.get().last(1).values()[0]['responses'].indexOf('Otr') >= 0)){
+        return true;
+      } else {
+        return false;
+      }}}
       
   // Theoretical Orientation
   var theoretical_orientation_ticks = {
-    type: 'survey-multi-select',
-    preamble: `OrientaciÃ³n TeÃ³rica`,
+    type: 'survey-multi-choice',
+    preamble: `Orientación Teórica`,
     questions: [{
         prompt: "", 
-        options: ["Humanista","Conductual","Cognitivo-Conductual","SistÃ©mica","Psicodrama/Musicoterapia", 
-                  "EMDR","PsicodinÃ¡mica","PsicoanÃ¡lisis","EclÃ©ctica (de todo un poco)", "Otra"], 
+        options: ["Humanista","Terapias Cognitivas/Comportamentales","Sistémica","Psicodrama/Musicoterapia", 
+                  "Psicodinámica","Psicoanálisis","Transpersonal", "Ecléctica (más de una/de todo un poco/depende el paciente)", "Otra"], 
         horizontal: false,
         required: true,
         name: 'orientacion'}],
     button_label: 'Continuar'};
 
-  // Aca hacemos los condicionales
+//// Aca hacemos los condicionales
   // Guardamos una pantalla, ej. la de tcc en otra variable, if_tcc, 
-  // que tiene una funciÃ³n condicional que evalÃºa si corresponde o no. 
-  // Esta funcion ahora busca si una palabra, ej. "Cognitivo", se encontrÃ³ en las respuestas de una etapa previa
-  // Para la orientaciÃ³n, que es la 4ta pregunta, usa .first(4).values()[3]
-  // O para la Ãºltima inmediata .last().values()[0]  
-      
+  // que tiene una función condicional que evalúa si corresponde o no. 
+  // Esta funcion ahora busca si una palabra, ej. "Cognitivo", se encontró en las respuestas de una etapa previa
+  // Para la orientación, que es la 4ta pregunta, usa .first(4).values()[3]
+  // O para la última inmediata .last().values()[0] 
+
   var tcc = {
     type: 'survey-multi-select',
     preamble : 'TCC:',
     questions: [{
         prompt: '',
-        options: ["AnÃ¡lisis Conductual Aplicado", "Terapia Racional Emotiva (Ellis)", "Terapia Cognitiva (Beck)", "Terapia de Conducta (Wolpe, Marie Cover Jones)",
-         "Terapia de AceptaciÃ³n y Compromiso", "Terapia DialÃ©ctico Conductual", "Terapia AnalÃ­tico Funcional", "Terapia basada en Mindfulness", "Otra"],
+        options: ["Análisis Conductual Aplicado", "Terapia Racional Emotiva (Ellis)", "Terapia Cognitiva (Beck)", "Terapia de Conducta (Wolpe, Marie Cover Jones)",
+         "Terapia de Aceptación y Compromiso", "Terapia Dialéctico Conductual", "Terapia Analítico Funcional", "Terapia basada en Mindfulness", "Otra"],
         horizontal: false,
         required: true}],    
     button_label: 'Continuar'};    
   var if_tcc = {
    timeline : [tcc],   
    conditional_function: function(){
-      if ((jsPsych.data.get().first(4).values()[3]['responses'].indexOf('Cognitivo') >= 0)){
+      if ((jsPsych.data.get().last().values()[0]['responses'].indexOf('Terapias') >= 0)){
         return true;
       } else {
         return false;
@@ -91,8 +115,8 @@
   var psan = {
     type: 'survey-multi-select',
     questions: [{
-        prompt: 'PsicoanÃ¡lisis:',
-        options: ["Lacaniano", "Freudiano", "PsicodinÃ¡mica", "Kleiniano", "PsicologÃ­a analÃ­tica (junguiana)", "Otra"],
+        prompt: 'Psicoanálisis:',
+        options: ["Lacaniano", "Freudiano", "Psicodinámica", "Kleiniano", "Psicología analítica (junguiana)", "Otra"],
         horizontal: false,
         required: true,
                 }],    
@@ -100,26 +124,25 @@
   var if_psan = {
    timeline : [psan],   
    conditional_function: function(){
-      if ((jsPsych.data.get().first(4).values()[3]['responses'].indexOf('PsicoanÃ¡lisis') >= 0)){
+      if ((jsPsych.data.get().last().values()[0]['responses'].indexOf('Psicoanálisis') >= 0)){
         return true;
       } else {
         return false;
       }}};
   
-
   var hum = {
     type: 'survey-multi-select',
-    preamble : 'HumanÃ­sta:',
+    preamble : 'Humanista:',
     questions: [{
         prompt: '',
-        options: ["Gestalt", "Terapia Basada en el Cliente", "Counseling", "Coaching", "Otra"],
+        options: ["Gestalt", "Terapia Basada en el consultante", "Counseling", "Coaching", "Otra"],
         horizontal: false,
         required: true}],    
     button_label: 'Continuar'};  
   var if_hum = {
    timeline : [hum],   
    conditional_function: function(){
-      if ((jsPsych.data.get().first(4).values()[3]['responses'].indexOf('Humanista') >= 0)){
+      if ((jsPsych.data.get().last().values()[0]['responses'].indexOf('Humanista') >= 0)){
         return true;
       } else {
         return false;
@@ -127,25 +150,24 @@
       
   var ecl = {
     type: 'survey-text',
-    questions: [{prompt: 'Por favor, detalle cuÃ¡les:', placeholder:'', columns:20, required:true}],
+    questions: [{prompt: 'Por favor, detalle cuáles:', placeholder:'', columns:20, required:true}],
     button_label: 'Continuar'};
   var if_ecl = {
    timeline : [etc],   
    conditional_function: function(){
-      if ((jsPsych.data.get().first(4).values()[3]['responses'].indexOf('EclÃ©ctic') >= 0)){
+      if ((jsPsych.data.get().last().values()[0]['responses'].indexOf('Ecléctic') >= 0)){
         return true;
       } else {
         return false;
       }}};
-
   var etc = {
     type: 'survey-text',
-    questions: [{prompt: 'Por favor, detalle cuÃ¡les otras:', placeholder:'', columns:20, required:true}],
+    questions: [{prompt: 'Por favor, detalle cuáles otras:', placeholder:'', columns:20, required:true}],
     button_label: 'Continuar'};
   var if_etc = {
    timeline : [etc],   
    conditional_function: function(){
-      if ((jsPsych.data.get().first(4).values()[3]['responses'].indexOf('Otr') >= 0)){
+      if ((jsPsych.data.get().last().values()[0]['responses'].indexOf('Otr') >= 0)){
         return true;
       } else {
         return false;
@@ -157,7 +179,7 @@
     preamble: '',
     questions: [{
         prompt: "Contexto de trabajo", 
-        options: ["PÃºblico", "Privado", "Obra Social", "Otro"], 
+        options: ["Público", "Privado", "Obra Social", "Otro"], 
         horizontal: false,
         required: true,
       }],
@@ -176,15 +198,16 @@
       }}};
  
   // Influence     
-  scale = ["No influyÃ³ para nada", "A veces", "InfluyÃ³ totalmente"]
+  scale = ["No influyó para nada", "Un poco", "Influyó totalmente"]
   var influence = {
     type: 'survey-multi-choice',
-    preamble: 'QuÃ© tanto influyeron los siguientes factores a la hora de elegir tu orientaciÃ³n teÃ³rica?',
-    questions: [{prompt:'Evidencia cientÃ­fica', options: scale, horizontal:true, required:true},
-		{prompt:'Experiencia personal con pacientes', options: scale, horizontal:true, required:true},
-		{prompt:'Entrenamiento clÃ­nico', options: scale, horizontal:true, required:true},
-		{prompt:'La preferencia de los clientes por el tratamiento', options: scale, horizontal:true, required:true},
-		{prompt:'IntuiciÃ³n', options: scale, horizontal:true, required:true},
+    preamble: '¿Qué tanto influyeron los siguientes factores a la hora de elegir tu orientación teórica?',
+    questions: [{prompt:'Evidencia científica', options: scale, horizontal:true, required:true},
+		{prompt:'Experiencia personal con consultantes', options: scale, horizontal:true, required:true},
+		{prompt:'Entrenamiento clínico', options: scale, horizontal:true, required:true},
+		{prompt:'La preferencia de los consultantes por el tratamiento', options: scale, horizontal:true, required:true},
+		{prompt:'Intuición', options: scale, horizontal:true, required:true},
+                {prompt:'Mis docentes o formación de grado', options: scale, horizontal:true, required:true},
 		{prompt:'Terapia personal', options: scale, horizontal:true, required:true}],
     randomize_question_order : true,
     button_label: 'Continuar',
@@ -194,16 +217,16 @@
   scale = ["Nunca", "A veces", "Siempre"]
   var sources = {
     type: 'survey-multi-choice',
-    preamble: 'QuÃ© fuentes utilizÃ¡s actualmente para mejorar tus habilidades y efectividad en la clÃ­nica?',
-    questions: [{prompt:'Experiencia personal con pacientes', options: scale, horizontal:true, required:true},
-		{prompt:'InvestigaciÃ³n empÃ­rica con ensayos controlados', options: scale, horizontal:true, required:true},
-		{prompt:'SupervisiÃ³n', options: scale, horizontal:true, required:true},
-		{prompt:'InvestigaciÃ³n empÃ­rica de estudios de caso', options: scale, horizontal:true, required:true},
-		{prompt:'DiscusiÃ³n de pares', options: scale, horizontal:true, required:true},
+    preamble: '¿Qué fuentes utilizás actualmente para mejorar tus habilidades y efectividad en la clínica?',
+    questions: [{prompt:'Experiencia personal con consultantes', options: scale, horizontal:true, required:true},
+		{prompt:'Investigación empírica con ensayos controlados', options: scale, horizontal:true, required:true},
+		{prompt:'Supervisión', options: scale, horizontal:true, required:true},
+		{prompt:'Investigación empírica de estudios de caso', options: scale, horizontal:true, required:true},
+		{prompt:'Discusión de pares', options: scale, horizontal:true, required:true},
 		{prompt:'Libros populares', options: scale, horizontal:true, required:true},
-		{prompt:'Observaciones de casos clÃ­nicos', options: scale, horizontal:true, required:true},
+		{prompt:'Observaciones de casos clínicos', options: scale, horizontal:true, required:true},
 		{prompt:'Medidas de resultado', options: scale, horizontal:true, required:true},
-		{prompt:'GuÃ­as o manuales clÃ­nicos', options: scale, horizontal:true, required:true}],
+		{prompt:'Guías o manuales clínicos', options: scale, horizontal:true, required:true}],
     randomize_question_order : true,
     button_label: 'Continuar',
   };
@@ -214,17 +237,17 @@
     type: 'survey-multi-choice',
     preamble: '',
     questions: [{prompt:'Estoy dispuesto a utilizar nuevos y diferentes tipos de terapia desarrollados por investigadores', options: scale, horizontal:true, required:true},
-		{prompt:'Mis pacientes son mÃ¡s complejos y diversos que los de los ensayos clÃ­nicos', options: scale, required:true},
-		{prompt:'Es mi deber profesional estar al dÃ­a con los nuevos desarrollos en la investigaciÃ³n clÃ­nica', options: scale, required:true},
-		{prompt:'Mis pacientes prefieren otros tratamientos que tratamientos basados ??en evidencia', options: scale, required:true},
-		{prompt:'Mi entrenamiento enfatizÃ³ los hallazgos de la investigaciÃ³n', options: scale, xrequired:true},
-		{prompt:'La terapia no puede ser manualizada', options: scale, horizontal:true, required:true},
-		{prompt:'Mis supervisores requieren que use tratamientos basados ??en evidencia', options: scale, required:true},
-		{prompt:'Los diagnÃ³sticos utilizados en los ensayos clÃ­nicos son demasiado simples', options: scale, required:true},
-		{prompt:'Los tratamientos basados ??en la evidencia son econÃ³micos', options: scale, required:true},
-		{prompt:'Los tratamientos que prefiero no se han probado en un ensayo controlado aleatorio', options: scale, required:true},
-		{prompt:'Puedo atraer nuevos pacientes aprendiendo un tratamiento basado en evidencia', options: scale, required:true},
-		{prompt:'Tengo un enfoque de tratamiento individual para cada paciente', options: scale, required:true}],
+		{prompt:'Mis consultantes son más complejos y diversos que los de los ensayos clínicos', options: scale, horizontal:true, required:true},
+		{prompt:'Es mi deber profesional estar al día con los nuevos desarrollos en la investigación clínica', options: scale, horizontal:true, required:true},
+		{prompt:'Mis consultantes prefieren otros tratamientos que tratamientos basados en evidencia', options: scale, horizontal:true, required:true},
+		{prompt:'Mi formación clínica hizo énfasis en la investigación', options: scale, horizontal:true, required:true},
+		{prompt:'La terapia no puede ser manualizada', options: scale, horizontal:true, horizontal:true, required:true},
+		{prompt:'Mis supervisores requieren que use tratamientos basados en evidencia', options: scale, horizontal:true, required:true},
+		{prompt:'Los diagnósticos utilizados en los ensayos clínicos son demasiado simples', options: scale, horizontal:true, required:true},
+		{prompt:'Los tratamientos basados en la evidencia son eficientes', options: scale, horizontal:true, required:true},
+		{prompt:'Los tratamientos que prefiero no se han probado en un ensayo controlado aleatorio', options: scale, horizontal:true, required:true},
+		{prompt:'Puedo atraer nuevos consultantes aprendiendo un tratamiento basado en evidencia', options: scale, horizontal:true, required:true},
+		{prompt:'Tengo un enfoque de tratamiento individual para cada consultante', options: scale, horizontal:true, required:true}],
     randomize_question_order : true,
     horizontal:true,
     button_label: 'Continue',
@@ -232,30 +255,28 @@
   var research_attitudes_2 = {
     type: 'survey-multi-choice',
     preamble: '',
-    questions: [{prompt:'Es importante incorporar los hallazgos cientÃ­ficos en mi prÃ¡ctica diaria', options: scale, required:true},
-		{prompt:'No tengo tiempo para aprender tratamientos basados ??en evidencia', options: scale, required:true},
-		{prompt:'IntentarÃ­a una nueva terapia incluso si fuera muy diferente de lo que estoy acostumbrado a hacer', options: scale, required:true},
-		{prompt:'La capacitaciÃ³n en tratamientos basados ??en evidencia me costarÃ­a demasiado dinero personalmente', options: scale, required:true},
-		{prompt:'Estoy interesado en aprender tratamientos basados ??en evidencia', options: scale, required:true},
-		{prompt:'No sÃ© quÃ© tratamientos estÃ¡n basados ??en evidencia', options: scale, required:true},
-		{prompt:'Los tratamientos que uso con mis clientes tienen una base empÃ­rica', options: scale, required:true},
-		{prompt:'Mi entrenamiento clÃ­nico no proporcionÃ³ informaciÃ³n suficiente sobre tratamientos basados ??en evidencia', options: scale, required:true},
-		{prompt:'La alianza terapÃ©utica es mÃ¡s importante que aprender a hacer una forma especÃ­fica de psicoterapia', options: scale, required:true},
-		{prompt:'La mayorÃ­a de las terapias son igualmente efectivas', options: scale, required:true},
-		{prompt:'Mi empleador no tiene los fondos para capacitaciÃ³n en tratamientos basados ??en evidencia', options: scale, required:true},
-		{prompt:'La experiencia clÃ­nica es mÃ¡s importante como guÃ­a para el tratamiento que la evidencia de investigaciÃ³n', options: scale, required:true}],
+    questions: [{prompt:'Es importante incorporar los hallazgos científicos en mi práctica diaria', options: scale, horizontal:true, required:true},
+		{prompt:'No tengo tiempo para aprender tratamientos basados en evidencia', options: scale, horizontal:true, required:true},
+		{prompt:'Intentaría una nueva terapia incluso si fuera muy diferente de lo que estoy acostumbrado a hacer', options: scale, horizontal:true, required:true},
+		{prompt:'La capacitación en tratamientos basados en evidencia me costaría demasiado dinero personalmente', options: scale, horizontal:true, required:true},
+		{prompt:'Estoy interesado en aprender tratamientos basados en evidencia', options: scale, horizontal:true, required:true},
+		{prompt:'No sé qué tratamientos están basados en evidencia', options: scale, horizontal:true, required:true},
+		{prompt:'Los tratamientos que uso con mis consultantes tienen una base empírica', options: scale, horizontal:true, required:true},
+		{prompt:'Mi entrenamiento clínico no proporcionó información suficiente sobre tratamientos basados en evidencia', options: scale, horizontal:true, required:true},
+		{prompt:'La alianza terapéutica es más importante que aprender a hacer una forma específica de psicoterapia', options: scale, horizontal:true, required:true},
+		{prompt:'La mayoría de las terapias son igualmente efectivas', options: scale, horizontal:true, required:true},
+		{prompt:'Mi empleador no tiene los fondos para capacitación en tratamientos basados en evidencia', options: scale, horizontal:true, required:true},
+		{prompt:'La experiencia clínica es más importante como guía para el tratamiento que la evidencia de investigación', options: scale, horizontal:true, required:true}],
     horizontal: true,    
     randomize_question_order : true,
     button_label: 'Terminar',
 	};
-
   var date = Date().toString();
-  var ec2url = "https://ec2-18-219-140-249.us-east-2.compute.amazonaws.com/postdata"
+  var ec2url = "https://ec2-3-17-145-249.us-east-2.compute.amazonaws.com/postdata"
 	
   jsPsych.init({
-    timeline: [welcome, consent, demography, theoretical_orientation_ticks, if_tcc, if_psan, if_hum, if_etc,
+    timeline: [welcome, consent, demography1, demography2, if_otroo, theoretical_orientation_ticks, if_tcc, if_psan, if_hum, if_etc,
                workplace_ticks, if_otro, influence, sources, research_attitudes_1, research_attitudes_2],
-
     on_finish: function() { $.ajax({
                         type: "POST",
                         data: {'data' : JSON.stringify(jsPsych.data.get().json())},
@@ -264,11 +285,8 @@
                         'Content-Type': 'application/x-www-form-urlencoded'},
                         async:false,
                         }); 
-			window.location = 'https://www.instagram.com/neurotransmitiendo/'
+			window.location = 'https://docs.google.com/document/d/1rcC5V32VqPAmnMal2SaBVfaMKDL4jGo05d5vQQaku7g/'
                         },
               });
-
 </script>
 </html>
-
-
