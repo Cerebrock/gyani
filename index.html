@@ -41,11 +41,11 @@
   var demography1 = {
       type: 'survey-text',
       questions: [
-        {prompt: '¿Cuál es tu edad?', placeholder:'', columns: 10, required:true},
-        {prompt: '¿Cuántos años de experiencia clínica posee?', placeholder:'', columns: 10, required:true},
-        {prompt: '¿Cuántas horas por semana pasa con consultantes?', columns: 10, placeholder:'', required:true},
+        {prompt: '¿Cuál es tu edad?', placeholder:'', columns: 10, required:false},
+        {prompt: '¿Cuántos años de experiencia clínica posee?', placeholder:'', columns: 10, required:false},
+        {prompt: '¿Cuántas horas por semana pasa con consultantes?', columns: 10, placeholder:'', required:false},
       ],
-      required:true,
+      required:false,
     button_label: 'Continuar',
   };
 
@@ -55,15 +55,15 @@
   var demography2 = {
       type: 'survey-multi-choice',
       questions: [
-                {prompt:'Género', options: generos, horizontal:true, required:true},
-		{prompt:'Nivel Educativo Alcanzado', options: educacion, horizontal:true, required:true}], 
-      required:true,
+                {prompt:'Género', options: generos, horizontal:true, required:false},
+		{prompt:'Nivel Educativo Alcanzado', options: educacion, horizontal:true, required:false}], 
+      required:false,
     button_label: 'Continuar',
   };
 
 var otroo = {
     type: 'survey-text',
-    questions: [{prompt: "Por favor, detalle:", placeholder:'', columns: 10,required:true, name:'otroo'}],
+    questions: [{prompt: "Por favor, detalle:", placeholder:'', columns: 10,required:false, name:'otroo'}],
     button_label: 'Continuar'};
   var if_otroo = {
    timeline : [otroo],   
@@ -151,7 +151,7 @@ var otroo = {
       
   var ecl = {
     type: 'survey-text',
-    questions: [{prompt: 'Por favor, detalle cuáles:', placeholder:'', columns:20, required:true}],
+    questions: [{prompt: 'Por favor, detalle cuáles:', placeholder:'', columns:20, required:false}],
     button_label: 'Continuar'};
   var if_ecl = {
    timeline : [etc],   
@@ -163,7 +163,7 @@ var otroo = {
       }}};
   var etc = {
     type: 'survey-text',
-    questions: [{prompt: 'Por favor, detalle cuáles otras:', placeholder:'', columns:20, required:true}],
+    questions: [{prompt: 'Por favor, detalle cuáles otras:', placeholder:'', columns:20, required:false}],
     button_label: 'Continuar'};
   var if_etc = {
    timeline : [etc],   
@@ -187,7 +187,7 @@ var otroo = {
     button_label: 'Continuar'};
   var otro = {
     type: 'survey-text',
-    questions: [{prompt: "Por favor, detalle:", placeholder:'', columns: 10,required:true}],
+    questions: [{prompt: "Por favor, detalle:", placeholder:'', columns: 10,required:false}],
     button_label: 'Continuar'};
   var if_otro = {
    timeline : [otro],   
@@ -203,13 +203,13 @@ var otroo = {
   var influence = {
     type: 'survey-multi-choice',
     preamble: '¿Qué tanto influyeron los siguientes factores a la hora de elegir tu orientación teórica?',
-    questions: [{prompt:'Evidencia científica', options: scale, horizontal:true, required:true},
-		{prompt:'Experiencia personal con consultantes', options: scale, horizontal:true, required:true},
-		{prompt:'Entrenamiento clínico', options: scale, horizontal:true, required:true},
-		{prompt:'La preferencia de los consultantes por el tratamiento', options: scale, horizontal:true, required:true},
-		{prompt:'Intuición', options: scale, horizontal:true, required:true},
-                {prompt:'Mis docentes o formación de grado', options: scale, horizontal:true, required:true},
-		{prompt:'Terapia personal', options: scale, horizontal:true, required:true}],
+    questions: [{prompt:'Evidencia científica', options: scale, horizontal:true, required:false},
+		{prompt:'Experiencia personal con consultantes', options: scale, horizontal:true, required:false},
+		{prompt:'Entrenamiento clínico', options: scale, horizontal:true, required:false},
+		{prompt:'La preferencia de los consultantes por el tratamiento', options: scale, horizontal:true, required:false},
+		{prompt:'Intuición', options: scale, horizontal:true, required:false},
+                {prompt:'Mis docentes o formación de grado', options: scale, horizontal:true, required:false},
+		{prompt:'Terapia personal', options: scale, horizontal:true, required:false}],
     randomize_question_order : true,
     button_label: 'Continuar',
   };
@@ -219,15 +219,15 @@ var otroo = {
   var sources = {
     type: 'survey-multi-choice',
     preamble: '¿Qué fuentes utilizás actualmente para mejorar tus habilidades y efectividad en la clínica?',
-    questions: [{prompt:'Experiencia personal con consultantes', options: scale, horizontal:true, required:true},
-		{prompt:'Investigación empírica con ensayos controlados', options: scale, horizontal:true, required:true},
-		{prompt:'Supervisión', options: scale, horizontal:true, required:true},
-		{prompt:'Investigación empírica de estudios de caso', options: scale, horizontal:true, required:true},
-		{prompt:'Discusión de pares', options: scale, horizontal:true, required:true},
-		{prompt:'Libros populares', options: scale, horizontal:true, required:true},
-		{prompt:'Observaciones de casos clínicos', options: scale, horizontal:true, required:true},
-		{prompt:'Medidas de resultado', options: scale, horizontal:true, required:true},
-		{prompt:'Guías o manuales clínicos', options: scale, horizontal:true, required:true}],
+    questions: [{prompt:'Experiencia personal con consultantes', options: scale, horizontal:true, required:false},
+		{prompt:'Investigación empírica con ensayos controlados', options: scale, horizontal:true, required:false},
+		{prompt:'Supervisión', options: scale, horizontal:true, required:false},
+		{prompt:'Investigación empírica de estudios de caso', options: scale, horizontal:true, required:false},
+		{prompt:'Discusión de pares', options: scale, horizontal:true, required:false},
+		{prompt:'Libros populares', options: scale, horizontal:true, required:false},
+		{prompt:'Observaciones de casos clínicos', options: scale, horizontal:true, required:false},
+		{prompt:'Medidas de resultado', options: scale, horizontal:true, required:false},
+		{prompt:'Guías o manuales clínicos', options: scale, horizontal:true, required:false}],
     randomize_question_order : true,
     button_label: 'Continuar',
   };
@@ -237,18 +237,18 @@ var otroo = {
   var research_attitudes_1 = {
     type: 'survey-multi-choice',
     preamble: '',
-    questions: [{prompt:'Estoy dispuesto a utilizar nuevos y diferentes tipos de terapia desarrollados por investigadores', options: scale, horizontal:true, required:true},
-		{prompt:'Mis consultantes son más complejos y diversos que los de los ensayos clínicos', options: scale, horizontal:true, required:true},
-		{prompt:'Es mi deber profesional estar al día con los nuevos desarrollos en la investigación clínica', options: scale, horizontal:true, required:true},
-		{prompt:'Mis consultantes prefieren otros tratamientos que tratamientos basados en evidencia', options: scale, horizontal:true, required:true},
-		{prompt:'Mi formación clínica hizo énfasis en la investigación', options: scale, horizontal:true, required:true},
-		{prompt:'La terapia no puede ser manualizada', options: scale, horizontal:true, horizontal:true, required:true},
-		{prompt:'Mis supervisores requieren que use tratamientos basados en evidencia', options: scale, horizontal:true, required:true},
-		{prompt:'Los diagnósticos utilizados en los ensayos clínicos son demasiado simples', options: scale, horizontal:true, required:true},
-		{prompt:'Los tratamientos basados en la evidencia son eficientes', options: scale, horizontal:true, required:true},
-		{prompt:'Los tratamientos que prefiero no se han probado en un ensayo controlado aleatorio', options: scale, horizontal:true, required:true},
-		{prompt:'Puedo atraer nuevos consultantes aprendiendo un tratamiento basado en evidencia', options: scale, horizontal:true, required:true},
-		{prompt:'Tengo un enfoque de tratamiento individual para cada consultante', options: scale, horizontal:true, required:true}],
+    questions: [{prompt:'Estoy dispuesto a utilizar nuevos y diferentes tipos de terapia desarrollados por investigadores', options: scale, horizontal:true, required:false},
+		{prompt:'Mis consultantes son más complejos y diversos que los de los ensayos clínicos', options: scale, horizontal:true, required:false},
+		{prompt:'Es mi deber profesional estar al día con los nuevos desarrollos en la investigación clínica', options: scale, horizontal:true, required:false},
+		{prompt:'Mis consultantes prefieren otros tratamientos que tratamientos basados en evidencia', options: scale, horizontal:true, required:false},
+		{prompt:'Mi formación clínica hizo énfasis en la investigación', options: scale, horizontal:true, required:false},
+		{prompt:'La terapia no puede ser manualizada', options: scale, horizontal:true, horizontal:true, required:false},
+		{prompt:'Mis supervisores requieren que use tratamientos basados en evidencia', options: scale, horizontal:true, required:false},
+		{prompt:'Los diagnósticos utilizados en los ensayos clínicos son demasiado simples', options: scale, horizontal:true, required:false},
+		{prompt:'Los tratamientos basados en la evidencia son eficientes', options: scale, horizontal:true, required:false},
+		{prompt:'Los tratamientos que prefiero no se han probado en un ensayo controlado aleatorio', options: scale, horizontal:true, required:false},
+		{prompt:'Puedo atraer nuevos consultantes aprendiendo un tratamiento basado en evidencia', options: scale, horizontal:true, required:false},
+		{prompt:'Tengo un enfoque de tratamiento individual para cada consultante', options: scale, horizontal:true, required:false}],
     randomize_question_order : true,
     horizontal:true,
     button_label: 'Continue',
@@ -256,18 +256,18 @@ var otroo = {
   var research_attitudes_2 = {
     type: 'survey-multi-choice',
     preamble: '',
-    questions: [{prompt:'Es importante incorporar los hallazgos científicos en mi práctica diaria', options: scale, horizontal:true, required:true},
-		{prompt:'No tengo tiempo para aprender tratamientos basados en evidencia', options: scale, horizontal:true, required:true},
-		{prompt:'Intentaría una nueva terapia incluso si fuera muy diferente de lo que estoy acostumbrado a hacer', options: scale, horizontal:true, required:true},
-		{prompt:'La capacitación en tratamientos basados en evidencia me costaría demasiado dinero personalmente', options: scale, horizontal:true, required:true},
-		{prompt:'Estoy interesado en aprender tratamientos basados en evidencia', options: scale, horizontal:true, required:true},
-		{prompt:'No sé qué tratamientos están basados en evidencia', options: scale, horizontal:true, required:true},
-		{prompt:'Los tratamientos que uso con mis consultantes tienen una base empírica', options: scale, horizontal:true, required:true},
-		{prompt:'Mi entrenamiento clínico no proporcionó información suficiente sobre tratamientos basados en evidencia', options: scale, horizontal:true, required:true},
-		{prompt:'La alianza terapéutica es más importante que aprender a hacer una forma específica de psicoterapia', options: scale, horizontal:true, required:true},
-		{prompt:'La mayoría de las terapias son igualmente efectivas', options: scale, horizontal:true, required:true},
-		{prompt:'Mi empleador no tiene los fondos para capacitación en tratamientos basados en evidencia', options: scale, horizontal:true, required:true},
-		{prompt:'La experiencia clínica es más importante como guía para el tratamiento que la evidencia de investigación', options: scale, horizontal:true, required:true}],
+    questions: [{prompt:'Es importante incorporar los hallazgos científicos en mi práctica diaria', options: scale, horizontal:true, required:false},
+		{prompt:'No tengo tiempo para aprender tratamientos basados en evidencia', options: scale, horizontal:true, required:false},
+		{prompt:'Intentaría una nueva terapia incluso si fuera muy diferente de lo que estoy acostumbrado a hacer', options: scale, horizontal:true, required:false},
+		{prompt:'La capacitación en tratamientos basados en evidencia me costaría demasiado dinero personalmente', options: scale, horizontal:true, required:false},
+		{prompt:'Estoy interesado en aprender tratamientos basados en evidencia', options: scale, horizontal:true, required:false},
+		{prompt:'No sé qué tratamientos están basados en evidencia', options: scale, horizontal:true, required:false},
+		{prompt:'Los tratamientos que uso con mis consultantes tienen una base empírica', options: scale, horizontal:true, required:false},
+		{prompt:'Mi entrenamiento clínico no proporcionó información suficiente sobre tratamientos basados en evidencia', options: scale, horizontal:true, required:false},
+		{prompt:'La alianza terapéutica es más importante que aprender a hacer una forma específica de psicoterapia', options: scale, horizontal:true, required:false},
+		{prompt:'La mayoría de las terapias son igualmente efectivas', options: scale, horizontal:true, required:false},
+		{prompt:'Mi empleador no tiene los fondos para capacitación en tratamientos basados en evidencia', options: scale, horizontal:true, required:false},
+		{prompt:'La experiencia clínica es más importante como guía para el tratamiento que la evidencia de investigación', options: scale, horizontal:true, required:false}],
     horizontal: true,    
     randomize_question_order : true,
     button_label: 'Terminar',
@@ -275,27 +275,29 @@ var otroo = {
 
   var comments = {
       type: 'survey-text',
-      questions: [
-        {prompt: `Denos su opinión sobre las preguntas: 
+      preamble:'Muchas gracias! Tu feedback es muy valioso para la investigación. A continuación puedes volver a ver los ítems numerados y dejarnos sugerencias' + 
+      
+`<p></p><div align="center">
+<textarea cols="100" rows="60" font="Open Sans">
+Ítems:
 
-- A continuación, responda las siguientes preguntas por favor: 
-Edad
-Género
+1 Edad
+2 Género
 	Femenino
 	Masculino
 	Otro
 	No deseo contestar
-Universidad en la que estudió
-Años de experiencia clínica
-Nivel de educación máximo adquirido
+3 Universidad en la que estudió
+4 Años de experiencia clínica
+5 Nivel de educación máximo adquirido
 	Licenciatura de grado
 	Carrera de especialización
 	Master
 	Doctorado
 	Otro: ¿Cuál?
-Cuántas horas por semana pasa con consultantes?
+6 Cuántas horas por semana pasa con consultantes?
 
-- Orientación Teórica:
+7 - Orientación Teórica:
 Humanista
 Terapias Cognitivas/Comportamentales
 Psicodrama/Musicoterapia
@@ -306,24 +308,24 @@ Transpersonal
 Ecléctico (más de una/de todo un poco/depende el paciente)
 Otra
 
-- Si elige psicoanálisis:	lacaniano, freudiano, psicodinámica, kleiniano, psicología analítica (junguiana), otra
+8 Si elige psicoanálisis: lacaniano, freudiano, psicodinámica, kleiniano, psicología analítica (junguiana), otra
 
-- Si elige TCC: Análisis Conductual Aplicado, Terapia Racional Emotiva (Ellis), Terapia Cognitiva (Beck), Terapia de Conducta (Wolpe, Marie Cover Jones), Terapia de Aceptación y Compromiso, Terapia Dialéctico Conductual, Terapia Analítico Funcional, Terapia basada en Mindfulness, otra
+9 Si elige TCC: Análisis Conductual Aplicado, Terapia Racional Emotiva (Ellis), Terapia Cognitiva (Beck), Terapia de Conducta (Wolpe, Marie Cover Jones), Terapia de Aceptación y Compromiso, Terapia Dialéctico Conductual, Terapia Analítico Funcional, Terapia basada en Mindfulness, otra
 
-- Si elige humanista: Gestáltica, Terapia Centrada en el Cliente, counseling, coaching
+10 Si elige humanista: Gestáltica, Terapia Centrada en el Cliente, counseling, coaching
 
-- Si elige ecléctico, ¿cuáles? (repetir la pregunta).
+11 Si elige ecléctico, ¿cuáles? (repetir la pregunta).
 
-- Si elige otra: ¿cuál?
+12 Si elige otra: ¿cuál?
 
-- Contexto de trabajo:
+13 Contexto de trabajo:
 Ámbito público (hospital u otro público)
 Ámbito privado
 Obra social
 otro
 
 	
-b) Qué tanto influyeron los siguientes factores a la hora de elegir su orientación teórica?
+14 b) Qué tanto influyeron los siguientes factores a la hora de elegir su orientación teórica?
 	LIKERT "No influyó para nada", "Un poco", "Influyó totalmente"
 	- Evidencia científica
 	- Experiencia personal con consultantes
@@ -332,7 +334,7 @@ b) Qué tanto influyeron los siguientes factores a la hora de elegir su orientac
 	- Intuición
 	- Terapia personal
 
-c) Qué fuentes utilizás actualmente para mejorar sus habilidades y efectividad en la clínica?
+15 Qué fuentes utilizás actualmente para mejorar sus habilidades y efectividad en la clínica?
 	LIKERT “Nunca", "A veces", "Siempre"
 	- Experiencia personal con consultantes 
 	- Investigación empírica con ensayos controlados 
@@ -345,7 +347,7 @@ c) Qué fuentes utilizás actualmente para mejorar sus habilidades y efectividad
 	- Guías o manuales clínicos
 
 
-d) Índice de actitudes de investigación
+16 Índice de actitudes de investigación
 LIKERT "Fuertemente en desacuerdo,” “Neutral”, “Fuertemente de acuerdo”
 - Estoy dispuesto a utilizar nuevos y diferentes tipos de terapia desarrollados por investigadores.
 - Mis consultantes son más complejos y diversos que los de los ensayos clínicos.
@@ -371,9 +373,13 @@ LIKERT "Fuertemente en desacuerdo,” “Neutral”, “Fuertemente de acuerdo�
 - La mayoría de las terapias son igualmente efectivas.
 - Mi empleador no tiene los fondos para capacitación en tratamientos basados ​​en evidencia. 
 - La experiencia clínica es más importante como guía para el tratamiento que la evidencia de investigación.
-`, placeholder:'Por favor deje sus comentarios aquí', columns: 400, rows:400, required:true},
-      ],
-      required:true,
+</textarea>`
+      
+      ,
+      questions: [
+        {prompt: '¿Alguna pregunta le pareció imprecisa, inapropiada o poco clara?' , placeholder:'Deje sus comentarios aquí', columns: 50, rows:10, required:false},
+        {prompt: '¿Considera que se podrían hacer otras preguntas que aporten información valiosa sobre lo que se intenta investigar?' , placeholder:'Gracias!', columns: 50, rows:10, required:false},
+        {prompt: '¿Considera que se podrían hacer otras preguntas que aporten información valiosa sobre lo que se intenta investigar?' , placeholder:'', columns: 50, rows:10, required:false}],
     button_label: 'Finalizar',
   };
 
@@ -381,7 +387,7 @@ LIKERT "Fuertemente en desacuerdo,” “Neutral”, “Fuertemente de acuerdo�
   var ec2url = "https://ec2-3-17-145-249.us-east-2.compute.amazonaws.com/postdata"
 	
   jsPsych.init({
-    timeline: [welcome, consent, demography1, demography2, if_otroo, theoretical_orientation_ticks, if_tcc, if_psan, if_hum, if_etc,
+    timeline: [comments, welcome, consent, demography1, demography2, if_otroo, theoretical_orientation_ticks, if_tcc, if_psan, if_hum, if_etc,
                workplace_ticks, if_otro, influence, sources, research_attitudes_1, research_attitudes_2, comments],
     on_finish: function() { $.ajax({
                         type: "POST",
