@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
   <head>
@@ -76,9 +77,9 @@ var otroo = {
   // Theoretical Orientation
   var theoretical_orientation_ticks = {
     type: 'survey-multi-choice',
-    preamble: `Orientación Teórica`,
+    preamble: ``,
     questions: [{
-        prompt: "", 
+        prompt: "Orientación Teórica", 
         options: ["Humanista","Terapias Cognitivas/Comportamentales","Sistémica","Psicodrama/Musicoterapia", 
                   "Psicodinámica","Psicoanálisis","Transpersonal", "Ecléctica (más de una/de todo un poco/depende el paciente)", "Otra"], 
         horizontal: false,
@@ -95,9 +96,9 @@ var otroo = {
 
   var tcc = {
     type: 'survey-multi-select',
-    preamble : 'TCC:',
+    preamble : '',
     questions: [{
-        prompt: '',
+        prompt: 'TCC',
         options: ["Análisis Conductual Aplicado", "Terapia Racional Emotiva (Ellis)", "Terapia Cognitiva (Beck)", "Terapia de Conducta (Wolpe, Marie Cover Jones)",
          "Terapia de Aceptación y Compromiso", "Terapia Dialéctico Conductual", "Terapia Analítico Funcional", "Terapia basada en Mindfulness", "Otra"],
         horizontal: false,
@@ -271,12 +272,117 @@ var otroo = {
     randomize_question_order : true,
     button_label: 'Terminar',
 	};
+
+  var comments = {
+      type: 'survey-text',
+      questions: [
+        {prompt: `Denos su opinión sobre las preguntas: 
+
+- A continuación, responda las siguientes preguntas por favor: 
+Edad
+Género
+	Femenino
+	Masculino
+	Otro
+	No deseo contestar
+Universidad en la que estudió
+Años de experiencia clínica
+Nivel de educación máximo adquirido
+	Licenciatura de grado
+	Carrera de especialización
+	Master
+	Doctorado
+	Otro: ¿Cuál?
+Cuántas horas por semana pasa con consultantes?
+
+- Orientación Teórica:
+Humanista
+Terapias Cognitivas/Comportamentales
+Psicodrama/Musicoterapia
+Psicodinámica
+Psicoanálisis
+Sistémica
+Transpersonal
+Ecléctico (más de una/de todo un poco/depende el paciente)
+Otra
+
+- Si elige psicoanálisis:	lacaniano, freudiano, psicodinámica, kleiniano, psicología analítica (junguiana), otra
+
+- Si elige TCC: Análisis Conductual Aplicado, Terapia Racional Emotiva (Ellis), Terapia Cognitiva (Beck), Terapia de Conducta (Wolpe, Marie Cover Jones), Terapia de Aceptación y Compromiso, Terapia Dialéctico Conductual, Terapia Analítico Funcional, Terapia basada en Mindfulness, otra
+
+- Si elige humanista: Gestáltica, Terapia Centrada en el Cliente, counseling, coaching
+
+- Si elige ecléctico, ¿cuáles? (repetir la pregunta).
+
+- Si elige otra: ¿cuál?
+
+- Contexto de trabajo:
+Ámbito público (hospital u otro público)
+Ámbito privado
+Obra social
+otro
+
+	
+b) Qué tanto influyeron los siguientes factores a la hora de elegir su orientación teórica?
+	LIKERT "No influyó para nada", "Un poco", "Influyó totalmente"
+	- Evidencia científica
+	- Experiencia personal con consultantes
+	- Entrenamiento clínico
+	- El tratamiento de preferencia de los consultantes 
+	- Intuición
+	- Terapia personal
+
+c) Qué fuentes utilizás actualmente para mejorar sus habilidades y efectividad en la clínica?
+	LIKERT “Nunca", "A veces", "Siempre"
+	- Experiencia personal con consultantes 
+	- Investigación empírica con ensayos controlados 
+	- Supervisión
+	- Investigación empírica de estudios de caso 
+	- Discusión con pares
+	- Libros populares 
+	- Observaciones de casos clínicos
+	- Medidas repetidas con escalas
+	- Guías o manuales clínicos
+
+
+d) Índice de actitudes de investigación
+LIKERT "Fuertemente en desacuerdo,” “Neutral”, “Fuertemente de acuerdo”
+- Estoy dispuesto a utilizar nuevos y diferentes tipos de terapia desarrollados por investigadores.
+- Mis consultantes son más complejos y diversos que los de los ensayos clínicos.
+- Es mi deber profesional estar al día con los nuevos desarrollos en la investigación clínica.
+- Mis consultantes prefieren otros tratamientos que tratamientos basados ​​en evidencia.
+- Mi formación clínica hizo énfasis en la investigación.
+- La terapia no puede ser manualizada.
+- Mis supervisores requieren que use tratamientos basados ​​en evidencia.
+- Los diagnósticos utilizados en los ensayos clínicos son demasiado simples.
+- Los tratamientos basados ​​en la evidencia son eficientes.
+- Los tratamientos que prefiero no se han probado en un ensayo controlado aleatorio.
+- Puedo atraer nuevos consultantes aprendiendo un tratamiento basado en evidencia.
+- Tengo un enfoque de tratamiento individual para cada consultante.
+- Es importante incorporar los hallazgos científicos en mi práctica diaria.
+- No tengo tiempo para aprender tratamientos basados ​​en evidencia
+- Intentaría una nueva terapia incluso si fuera muy diferente de lo que estoy acostumbrado a hacer.
+- La capacitación en tratamientos basados ​​en evidencia me costaría demasiado dinero personalmente.
+- Estoy interesado en aprender tratamientos basados ​​en evidencia.
+- No sé qué tratamientos están basados ​​en evidencia.
+- Los tratamientos que uso con mis consultantes tienen una base empírica.
+- Mi entrenamiento clínico no proporcionó información suficiente sobre tratamientos basados ​​en evidencia.
+- La alianza terapéutica es más importante que aprender a hacer una forma específica de psicoterapia.
+- La mayoría de las terapias son igualmente efectivas.
+- Mi empleador no tiene los fondos para capacitación en tratamientos basados ​​en evidencia. 
+- La experiencia clínica es más importante como guía para el tratamiento que la evidencia de investigación.
+`, placeholder:'Por favor deje sus comentarios aquí', columns: 400, rows:400, required:true},
+      ],
+      required:true,
+    button_label: 'Finalizar',
+  };
+
   var date = Date().toString();
   var ec2url = "https://ec2-3-17-145-249.us-east-2.compute.amazonaws.com/postdata"
 	
   jsPsych.init({
     timeline: [welcome, consent, demography1, demography2, if_otroo, theoretical_orientation_ticks, if_tcc, if_psan, if_hum, if_etc,
-               workplace_ticks, if_otro, influence, sources, research_attitudes_1, research_attitudes_2],
+               workplace_ticks, if_otro, influence, sources, research_attitudes_1, research_attitudes_2, comments],
     on_finish: function() { $.ajax({
                         type: "POST",
                         data: {'data' : JSON.stringify(jsPsych.data.get().json())},
