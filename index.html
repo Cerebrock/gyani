@@ -3,6 +3,7 @@
 <html>
   <head>
     <title>Con-ciencia</title>
+    <meta charset="UTF-8">
     <link rel="icon" type="image/png" href="static/media/misc/favicon.ico">
     <link rel="stylesheet" href="static/jspsych/css/jspsych.css"></link>
     <script src="static/jspsych/jspsych.js"></script>
@@ -400,7 +401,7 @@ LIKERT "Fuertemente en desacuerdo,” “Neutral”, “Fuertemente de acuerdo�
   };
 
   var date = Date().toString();
-  var ec2url = "https://ec2-3-17-145-249.us-east-2.compute.amazonaws.com/postdata"
+  var ec2url = "https://ihum.ai/data-server/postdata"
 	
   jsPsych.init({
     timeline: [welcome, consent, demography1, demography2, if_otroo, theoretical_orientation_ticks, if_tcc, if_psan, if_hum, if_etc,
@@ -409,8 +410,7 @@ LIKERT "Fuertemente en desacuerdo,” “Neutral”, “Fuertemente de acuerdo�
                         type: "POST",
                         data: {'data' : JSON.stringify(jsPsych.data.get().json())},
                         url: ec2url,
-                        headers: {
-                        'Content-Type': 'application/x-www-form-urlencoded'},
+                        headers: {'Content-Type': 'application/x-www-form-urlencoded'},
                         async:false,
                         }); 
 			window.location = 'https://www.instagram.com/neurotransmitiendo/'
