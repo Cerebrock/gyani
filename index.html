@@ -155,7 +155,7 @@ var otroo = {
     questions: [{prompt: 'Por favor, detalle cuáles:', placeholder:'', columns:20, required:true}],
     button_label: 'Continuar'};
   var if_ecl = {
-   timeline : [etc],   
+   timeline : [ecl],   
    conditional_function: function(){
       if ((jsPsych.data.get().last().values()[0]['responses'].indexOf('Ecléctic') >= 0)){
         return true;
