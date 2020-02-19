@@ -149,19 +149,7 @@ var otroo = {
       } else {
         return false;
       }}};
-      
-  var ecl = {
-    type: 'survey-text',
-    questions: [{prompt: 'Por favor, detalle cuáles:', placeholder:'', columns:20, required:true}],
-    button_label: 'Continuar'};
-  var if_ecl = {
-   timeline : [ecl],   
-   conditional_function: function(){
-      if ((jsPsych.data.get().last().values()[0]['responses'].indexOf('Ecléctic') >= 0)){
-        return true;
-      } else {
-        return false;
-      }}};
+  
   var etc = {
     type: 'survey-text',
     questions: [{prompt: 'Por favor, detalle cuáles otras:', placeholder:'', columns:20, required:true}],
@@ -170,6 +158,19 @@ var otroo = {
    timeline : [etc],   
    conditional_function: function(){
       if ((jsPsych.data.get().last().values()[0]['responses'].indexOf('Otr') >= 0)){
+        return true;
+      } else {
+        return false;
+      }}};
+      
+  var ecl = {
+    type: 'survey-text',
+    questions: [{prompt: 'Por favor, detalle cuáles:', placeholder:'', columns:20, required:true}],
+    button_label: 'Continuar'};
+  var if_ecl = {
+   timeline : [etc],   
+   conditional_function: function(){
+      if ((jsPsych.data.get().last().values()[0]['responses'].indexOf('Ecléctic') >= 0)){
         return true;
       } else {
         return false;
@@ -404,7 +405,7 @@ LIKERT "Fuertemente en desacuerdo,” “Neutral”, “Fuertemente de acuerdo�
   var ec2url = "https://ihum.ai/data-server/postdata"
 	
   jsPsych.init({
-    timeline: [welcome, consent, demography1, demography2, if_otroo, theoretical_orientation_ticks, if_tcc, if_psan, if_hum, if_etc,
+    timeline: [welcome, consent, demography1, demography2, if_otroo, theoretical_orientation_ticks, if_tcc, if_psan, if_hum, if_ecl, if_etc,
                workplace_ticks, if_otro, influence, sources, research_attitudes_1, research_attitudes_2, comments],
     on_finish: function() { $.ajax({
                         type: "POST",
