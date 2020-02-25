@@ -409,7 +409,7 @@ LIKERT "Fuertemente en desacuerdo,” “Neutral”, “Fuertemente de acuerdo�
                workplace_ticks, if_otro, influence, sources, research_attitudes_1, research_attitudes_2, comments],
     on_finish: function() { $.ajax({
                         type: "POST",
-                        data: jsPsych.data.get().json(),
+                        data: {'data' : JSON.stringify(jsPsych.data.get().csv())},
                         url: ec2url,
                         headers: {'Content-Type': 'application/x-www-form-urlencoded'},
                         async:false,
