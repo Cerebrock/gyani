@@ -16,7 +16,10 @@
   </head>
   <body></body>
   <script>
-  
+    /************* CREATE THE SUBJECT ID *************/
+    let subject_id = jsPsych.randomization.randomID(5);
+    jsPsych.data.addProperties({subject: subject_id});
+
   // Cada variable define una pantalla en el experimento
   // La secuencia de variables se guarda abajo en la variable "timeline" de jspsych
   
@@ -123,6 +126,7 @@ var otroo = {
         required: true,
                 }],    
     button_label: 'Continuar'};
+
   var if_psan = {
    timeline : [psan],   
    conditional_function: function(){
@@ -187,10 +191,12 @@ var otroo = {
         required: true,
       }],
     button_label: 'Continuar'};
+
   var otro = {
     type: 'survey-text',
     questions: [{prompt: "Por favor, detalle:", placeholder:'', columns: 10,required:true}],
     button_label: 'Continuar'};
+
   var if_otro = {
    timeline : [otro],   
    conditional_function: function(){
@@ -403,6 +409,16 @@ LIKERT "Fuertemente en desacuerdo,” “Neutral”, “Fuertemente de acuerdo�
 
   var date = Date().toString();
   var ec2url = "https://ihum.ai/data-server/postdata"
+
+
+  var subject_id = jsPsych.randomization.randomID(5);
+
+  jsPsych.data.addProperties({
+    subject: subject_id,
+    // condition: condition_assignment
+  });
+
+  jsPsych.data.getInteractionData();
 	
   jsPsych.init({
     timeline: [welcome, consent, demography1, demography2, if_otroo, theoretical_orientation_ticks, if_tcc, if_psan, if_hum, if_ecl, if_etc,
@@ -414,8 +430,10 @@ LIKERT "Fuertemente en desacuerdo,” “Neutral”, “Fuertemente de acuerdo�
                         headers: {'Content-Type': 'application/x-www-form-urlencoded'},
                         async:false,
                         }); 
-			window.location = 'https://www.instagram.com/neurotransmitiendo/'
-                        },
+			window.location = 'https://www.instagram.com/neurotransmitiendo/';
+            // jsPsych.data.get().localSave("csv", `${subject_id}_test.csv` )
+            //             },
               });
+
 </script>
 </html>
