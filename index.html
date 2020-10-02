@@ -29,7 +29,7 @@
     stimulus: "<font size=5.5><p>¡Hola!</p><p>"+
     // "<p>Esta encuesta forma parte del proyecto de investigación y divulgación científica <b>Neurotransmitiendo</b>.</p>"+
     "<p>La encuesta está dirigida únicamente a psicólogos recibidos que estén o hayan trabajado en el ámbito clínico. Se agradece mucho la difusión de la misma a colegas que trabajen en el mismo ámbito. </p>"+
-    "<p>La participación en la misma es voluntaria teniendo el control de desistir si lo desea. La información que se recoja con este instrumento es confidencial y se utilizará solamente con fines científicos. Al participar de esta encuesta en línea su consentimiento informado será tomado como dado. Ante cualquier duda, puede escribir a <b>ntransmitiendo@gmail.com</b>",
+    "<p>La participación en la misma es voluntaria teniendo el control de desistir si lo desea. La información que se recoja con este instrumento es confidencial y se utilizará solamente con fines científicos. Al participar de esta encuesta en línea su consentimiento informado será tomado como dado.",
     trial_duration: 900000,
     choices: ['Continuar'],
     };
@@ -46,7 +46,7 @@
       type: 'survey-text',
       questions: [
         {prompt: '¿Cuál es su edad?', placeholder:'', columns: 10, required:true, name: 'age'},
-        {prompt: 'Universidad en la que recibió su último titulo/titulo de grado ', placeholder:'', columns: 10, required:true, name:'university'},
+        {prompt: 'Universidad en la que recibió su último título/título de grado ', placeholder:'', columns: 10, required:true, name:'university'},
         {prompt: '¿Cuántos años de experiencia clínica posee?', placeholder:'', columns: 10, required:true, name:'years_experience'},
         {prompt: '¿Cuántas horas por semana pasa con consultantes?', columns: 10, placeholder:'', required:true, name:'hours_week'},
         {prompt: 'País en el que ejerce', columns: 10, placeholder:'', required:true, name:'country_of_work'},
@@ -211,8 +211,10 @@ var otroo = {
         return false;
       }}};
  
-  // Influence     
-  scale = ["<p>1<br>No influyó para nada</p>", "<pre>     2    <br>   </pre>","<pre>    3    </pre>","<p>4<br>Un poco<p>","<pre>    5    </pre>","<pre>    6    </pre>", "<p>7<br>Influyó totalmente</p>", "No sabe/No contesta"]
+  // Influence
+  scale = ["<br>1"+"<br>No influyó para nada".fontsize(5), "<br>2","<br>3","<br>4"+"<br>Un poco".fontsize(5),"<br>5","<br>6", "<br>7"+"<br>Influyó totalmente".fontsize(5)]
+  // scale = ["1- No influyó para nada", "2","3","4- Un poco","5","6", "7-Influyó totalmente"]
+  // var scale_values = "<br>1 - No inluyó para nada/ 4- Un poco/ 7- Influyó totalmente"
   var influence = {
     type: 'survey-multi-choice',
     preamble: '¿Qué tanto influyeron los siguientes factores a la hora de elegir tu orientación teórica?',
@@ -228,7 +230,7 @@ var otroo = {
   };
       
   // Sources
-  scale = ["<p>1<br>Nunca</p>", "<pre>     2    <br>   </pre>","<pre>    3    </pre>","<p>4<br>A veces<p>","<pre>    5    </pre>","<pre>    6    </pre>", "<p>7<br>Siempre</p>", "No sabe/No contesta"]
+  scale = ["<br>1<br>Nunca", "<br>2","<br>3","<br>4<br>A veces","<br>5","<br>6", "<br>7<br>Siempre"]
   var sources = {
     type: 'survey-multi-choice',
     preamble: '¿Qué fuentes utilizás actualmente para mejorar tus habilidades y efectividad en la clínica?',
@@ -237,8 +239,8 @@ var otroo = {
 		{prompt:'Supervisión', options: scale, horizontal:true, required:true, name:'src_supervision'},
 		{prompt:'Investigación empírica de estudios de caso', options: scale, horizontal:true, required:true, name:'src_case_studies'},
 		{prompt:'Discusión de pares', options: scale, horizontal:true, required:true, name:'src_peer_discussions'},
-		{prompt:'Libros populares de psicología', options: scale, horizontal:true, required:true, name:'src_popular_books'},
-		{prompt:'Observaciones de casos clínicos', options: scale, horizontal:true, required:true, name:'src_case_observations'},
+		{prompt:'Libros populares de Psicología', options: scale, horizontal:true, required:true, name:'src_popular_books'},
+		{prompt:'Observaciones de casos clínicos (ej: cámara Gesell)', options: scale, horizontal:true, required:true, name:'src_case_observations'},
 		{prompt:'Utilización de escalas', options: scale, horizontal:true, required:true, name:'src_scales'},
 		{prompt:'Guías o manuales clínicos', options: scale, horizontal:true, required:true, name:'src_clinical_guides'},
         {prompt:'Consulta con mi terapeuta/analista', options: scale, horizontal:true, required:true, name:'src_consultation_therapy'}
@@ -249,7 +251,7 @@ var otroo = {
       
   // Research Attitudes
   // scale = ["Fuertemente en desacuerdo", "Neutral", "Fuertemente de acuerdo"]
-  scale = ["<p>1<br>Fuertemente en desacuerdo</p>", "<pre>     2    <br>   </pre>","<pre>    3    </pre>","<p>4<br>Neutral<p>","<pre>    5    </pre>","<pre>    6    </pre>", "<p>7<br>Fuertemente de acuerdo</p>", "No sabe/No contesta"]
+  scale = ["<br>1" + "<br>Fuertemente en desacuerdo".fontsize(4), "<br>2","<br>3","<br>4" +"<br>Neutral".fontsize(4),"<br>5","<br>6", "<br>7"+"<br>Fuertemente de acuerdo".fontsize(4)]
   var research_attitudes_1 = {
     type: 'survey-multi-choice',
     preamble: '',
@@ -282,7 +284,7 @@ var otroo = {
 		{prompt:'Mi entrenamiento clínico no proporcionó información suficiente sobre tratamientos basados en evidencia', options: scale, horizontal:true, required:true, name: 'att_clinical_training'},
 		{prompt:'La alianza terapéutica es más importante que aprender a hacer una forma específica de psicoterapia', options: scale, horizontal:true, required:true, name: 'att_aliance'},
 		{prompt:'La mayoría de las terapias son igualmente efectivas', options: scale, horizontal:true, required:true, name: 'att_all_effective'},
-		{prompt:'Mi empleador no tiene los fondos para capacitación en tratamientos basados en evidencia', options: scale, horizontal:true, required:true, name: 'att_employer_money'},
+		{prompt:'No cuento (o mi empleador no cuenta) con los fondos para capacitación en tratamientos basados en evidencia', options: scale, horizontal:true, required:true, name: 'att_employer_money'},
 		{prompt:'La experiencia clínica es más importante como guía para el tratamiento que la evidencia de investigación', options: scale, horizontal:true, required:true, name: 'att_experience_over_evidence'}
 		],
     horizontal: true,    
@@ -431,7 +433,8 @@ LIKERT "Fuertemente en desacuerdo,” “Neutral”, “Fuertemente de acuerdo�
       type: "html-button-response",
       stimulus: "<p>Esta encuesta forma parte del proyecto de investigación y divulgación científica <b>Neurotransmitiendo</b>.</p>"+
               "<p>Te queremos agradecer por haber participado de esta investigación.</p>" +
-              "<p>Agradecemos profundamente si pudieras compartir esta encuesta con otros colegas. Muchas Gracias.</p>",
+              "<p>Por cualquier consulta respecto de esta investigación podes escribirnos a <b>ntransmitiendo@gmail.com</b>.</p>" +
+              "<p>Agradecemos profundamente si pudieras <b>compartir</b> esta encuesta con otros colegas. Muchas Gracias.</p>",
       trial_duration: 900000,
       choices: ['Finalizar'],
     };
